@@ -365,13 +365,16 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blokirKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tulisKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.device2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cetakKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.device2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GbSumberData = new System.Windows.Forms.GroupBox();
             this.txtrfid = new System.Windows.Forms.TextBox();
             this.rbMahasiswa = new System.Windows.Forms.RadioButton();
             this.rbPegawai = new System.Windows.Forms.RadioButton();
             this.GbReaderConnection = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LbLoadingBar = new System.Windows.Forms.Label();
             this.ProgressBarSinkron = new System.Windows.Forms.ProgressBar();
             this.BtnListTagID = new System.Windows.Forms.Button();
@@ -408,9 +411,6 @@
             this.Edit_StartAddress_6B_Baca = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
             this.ComboBox_ID1_6B_Baca = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.device2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.device2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.TabSheet_CMD.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -462,6 +462,7 @@
             this.GbSumberData.SuspendLayout();
             this.GbReaderConnection.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.GbReaderApplication.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.GbKendaraan1.SuspendLayout();
@@ -471,7 +472,6 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox38.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -4187,33 +4187,33 @@
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.mainMenuToolStripMenuItem.Text = "Tampilan Utama";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.mainMenuToolStripMenuItem_Click);
             // 
             // settingPortToolStripMenuItem
             // 
             this.settingPortToolStripMenuItem.Name = "settingPortToolStripMenuItem";
-            this.settingPortToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.settingPortToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.settingPortToolStripMenuItem.Text = "Set IP Address";
             this.settingPortToolStripMenuItem.Click += new System.EventHandler(this.settingPortToolStripMenuItem_Click);
             // 
             // cekPengambilanToolStripMenuItem
             // 
             this.cekPengambilanToolStripMenuItem.Name = "cekPengambilanToolStripMenuItem";
-            this.cekPengambilanToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.cekPengambilanToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.cekPengambilanToolStripMenuItem.Text = "Cek Pengambilan";
             this.cekPengambilanToolStripMenuItem.Click += new System.EventHandler(this.cekPengambilanToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(249, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.exitToolStripMenuItem.Text = "Keluar";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -4339,12 +4339,25 @@
             this.tulisKartuToolStripMenuItem.Text = "Tulis Kartu";
             this.tulisKartuToolStripMenuItem.Click += new System.EventHandler(this.tulisKartuToolStripMenuItem_Click);
             // 
+            // device2ToolStripMenuItem1
+            // 
+            this.device2ToolStripMenuItem1.Name = "device2ToolStripMenuItem1";
+            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(163, 30);
+            this.device2ToolStripMenuItem1.Text = "Device 2";
+            this.device2ToolStripMenuItem1.Click += new System.EventHandler(this.device2ToolStripMenuItem1_Click);
+            // 
             // cetakKartuToolStripMenuItem
             // 
             this.cetakKartuToolStripMenuItem.Name = "cetakKartuToolStripMenuItem";
             this.cetakKartuToolStripMenuItem.Size = new System.Drawing.Size(114, 29);
             this.cetakKartuToolStripMenuItem.Text = "Cetak Kartu";
             this.cetakKartuToolStripMenuItem.Visible = false;
+            // 
+            // device2ToolStripMenuItem
+            // 
+            this.device2ToolStripMenuItem.Name = "device2ToolStripMenuItem";
+            this.device2ToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
+            this.device2ToolStripMenuItem.Text = "Device 2";
             // 
             // GbSumberData
             // 
@@ -4423,6 +4436,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 98);
             this.panel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(24, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(231, 98);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // LbLoadingBar
             // 
@@ -4870,31 +4895,6 @@
             this.ComboBox_ID1_6B_Baca.Size = new System.Drawing.Size(384, 28);
             this.ComboBox_ID1_6B_Baca.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(24, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(231, 98);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // device2ToolStripMenuItem
-            // 
-            this.device2ToolStripMenuItem.Name = "device2ToolStripMenuItem";
-            this.device2ToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
-            this.device2ToolStripMenuItem.Text = "Device 2";
-            this.device2ToolStripMenuItem.Click += new System.EventHandler(this.device2ToolStripMenuItem_Click);
-            // 
-            // device2ToolStripMenuItem1
-            // 
-            this.device2ToolStripMenuItem1.Name = "device2ToolStripMenuItem1";
-            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(252, 30);
-            this.device2ToolStripMenuItem1.Text = "Device 2";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -5004,6 +5004,7 @@
             this.GbReaderConnection.ResumeLayout(false);
             this.GbReaderConnection.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.GbReaderApplication.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.GbKendaraan1.ResumeLayout(false);
@@ -5018,7 +5019,6 @@
             this.tableLayoutPanel4.PerformLayout();
             this.groupBox38.ResumeLayout(false);
             this.groupBox38.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

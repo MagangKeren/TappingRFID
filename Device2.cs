@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace AmbilKtm
 {
+    //card reader device 2
     public partial class Device2 : Form
     {
         public Device2()

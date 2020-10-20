@@ -6854,7 +6854,9 @@ namespace AmbilKtm
             ManagUser.ShowDialog();
         }
 
-        private void device2ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        //masuk ke device 2
+        private void device2ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Device2 frm = new Device2();
             frm.ShowDialog();
