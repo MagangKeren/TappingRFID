@@ -410,6 +410,7 @@
             this.ComboBox_ID1_6B_Baca = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.device2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.device2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.TabSheet_CMD.SuspendLayout();
             this.groupBox37.SuspendLayout();
@@ -4331,6 +4332,8 @@
             // 
             // tulisKartuToolStripMenuItem
             // 
+            this.tulisKartuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.device2ToolStripMenuItem1});
             this.tulisKartuToolStripMenuItem.Name = "tulisKartuToolStripMenuItem";
             this.tulisKartuToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.tulisKartuToolStripMenuItem.Text = "Tulis Kartu";
@@ -4886,6 +4889,12 @@
             this.device2ToolStripMenuItem.Text = "Device 2";
             this.device2ToolStripMenuItem.Click += new System.EventHandler(this.device2ToolStripMenuItem_Click);
             // 
+            // device2ToolStripMenuItem1
+            // 
+            this.device2ToolStripMenuItem1.Name = "device2ToolStripMenuItem1";
+            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(252, 30);
+            this.device2ToolStripMenuItem1.Text = "Device 2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -5397,6 +5406,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem device2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem device2ToolStripMenuItem1;
     }
 }
 
