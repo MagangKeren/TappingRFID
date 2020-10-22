@@ -34,19 +34,22 @@ namespace AmbilKtm
             status = Reader1.OpenCommPort(cCommPort.Text);
             if (status != 0)
             {
-                lInfo.Items.Add("Open Comm Port Failed!");
+                MessageBox.Show("Open Comm Port Failed!");
+                //lInfo.Items.Add("Open Comm Port Failed!");
                 return;
             }
             status = Reader1.GetFirmwareVersion(ref v1, ref v2);
             if (status != 0)
             {
-                lInfo.Items.Add("Can not connect with the reader!");
+                MessageBox.Show("Can not connect with the reader!");
+                //lInfo.Items.Add("Can not connect with the reader!");
                 Reader1.CloseCommPort();
                 return;
             }
-            lInfo.Items.Add("Connect the reader success!");
+            MessageBox.Show("Connect the reader success!");
+            //lInfo.Items.Add("Connect the reader success!");
             s = string.Format("The reader's firmware version is:V{0:d2}.{1:d2}", v1, v2);
-            lInfo.Items.Add(s);
+           // lInfo.Items.Add(s);
             //bAntQuery_Click(sender, e);
 
 
@@ -54,11 +57,13 @@ namespace AmbilKtm
             status = Reader1.SetBaudRate((byte)cBaudrate.SelectedIndex);
             if (status != 0)
             {
-                lInfo.Items.Add("Set baudrate failed!");
+                MessageBox.Show("Set baudrate failed!");
+               // lInfo.Items.Add("Set baudrate failed!");
                 Reader1.CloseCommPort();
                 return;
             }
-            lInfo.Items.Add("Set baudrate success!");
+           // MessageBox.Show("Set baudrate success!");
+           // lInfo.Items.Add("Set baudrate success!");
 
             bReset.Enabled = true;
 
@@ -67,7 +72,7 @@ namespace AmbilKtm
 
 
 
-            bEpcId.Enabled = true;
+            
             bEpcRead.Enabled = true;
             bEpcWrite.Enabled = true;
             
@@ -77,27 +82,7 @@ namespace AmbilKtm
 
         private void bEpcId_Click(object sender, EventArgs e)
         {
-            if (EpcReading == 0)
-            {
-                Reader1.ClearIdBuf();
-                lInfo.Items.Clear();
-                lInfo.Items.Add("Start multiply tags identify!");
-                TagCnt = 0;
-                if (cEpcTimes.SelectedIndex > 0)
-                    ScanTimes = Convert.ToInt16(cEpcTimes.Text);
-                else
-                    ScanTimes = 9999;
-                timerScanEPC.Interval = (tEpcSpeed.Value + 1) * 20;
-                timerScanEPC.Enabled = true;
-                bEpcId.Text = "Stop";
-                EpcReading = 1;
-            }
-            else
-            {
-                timerScanEPC.Enabled = false;
-                EpcReading = 0;
-                bEpcId.Text = "Identify";
-            }
+            
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -125,7 +110,7 @@ namespace AmbilKtm
                         s = string.Format("{0:X2} ", IsoBuf[i, j]);
                         s1 += s;
                     }
-                    lInfo.Items.Add(s1);
+                    //lInfo.Items.Add(s1);
                     ListViewItem lviList = new ListViewItem();
                     if (lvTagList.Items.Count <= 0)
                     {
@@ -191,7 +176,8 @@ namespace AmbilKtm
 
             if (status != 0)
             {
-                lInfo.Items.Add("Read failed!");
+                MessageBox.Show("Read failed!");
+               // lInfo.Items.Add("Read failed!");
                 return;
             }
             else
@@ -201,8 +187,32 @@ namespace AmbilKtm
                     s1 = string.Format("{0:X2}", value[i]);
                     s += s1;
                 }
-                lInfo.Items.Add("Read success!");
-                lInfo.Items.Add(s);
+                
+                //lInfo.Items.Add(s);
+                if (EpcReading == 0)
+                {
+                    MessageBox.Show("Read success!");
+                    //lInfo.Items.Add("Read success!");
+                    Reader1.ClearIdBuf();
+                    //lInfo.Items.Clear();
+                    //lInfo.Items.Add("Start multiply tags identify!");
+                    TagCnt = 0;
+                    if (cEpcTimes.SelectedIndex > 0)
+                        ScanTimes = Convert.ToInt16(cEpcTimes.Text);
+                    else
+                        ScanTimes = 9999;
+                    timerScanEPC.Interval = (tEpcSpeed.Value + 1) * 20;
+                    timerScanEPC.Enabled = true;
+                    bEpcRead.Text = "Stop";
+                    EpcReading = 1;
+                }
+                else
+                {
+                    timerScanEPC.Enabled = false;
+                    EpcReading = 0;
+                    bEpcRead.Text = "Read";
+
+                }
             }
         }
 
@@ -237,12 +247,14 @@ namespace AmbilKtm
             }
             catch (Exception)
             {
-                lInfo.Items.Add("Please input data needed");
+                MessageBox.Show("Please input data needed");
+                //lInfo.Items.Add("Please input data needed");
                 return;
             }
             if (i != wordcnt)
             {
-                lInfo.Items.Add("Please input data needed");
+                MessageBox.Show("Please input data needed");
+                //lInfo.Items.Add("Please input data needed");
                 return;
             }
             for (byte j = 0; j < wordcnt; j++)
@@ -250,11 +262,13 @@ namespace AmbilKtm
                 status = Reader1.EpcWrite(membank, (byte)(wordptr + j), value[j]);
                 if (status != 0)
                 {
-                    lInfo.Items.Add("Write failed!");
+                    MessageBox.Show("Write failed!");
+                    //lInfo.Items.Add("Write failed!");
                     return;
                 }
             }
-            lInfo.Items.Add("Write success!");
+            MessageBox.Show("Write success!");
+            //lInfo.Items.Add("Write success!");
         }
 
         private void bReset_Click(object sender, EventArgs e)
@@ -278,7 +292,7 @@ namespace AmbilKtm
 
         private void bClear_Click(object sender, EventArgs e)
         {
-            lInfo.Items.Clear();
+            //lInfo.Items.Clear();
             lvTagList.Items.Clear();
 
         }
@@ -294,7 +308,7 @@ namespace AmbilKtm
 
 
 
-            bEpcId.Enabled = false;
+           
             bEpcRead.Enabled = false;
             bEpcWrite.Enabled = false;
 
@@ -305,9 +319,9 @@ namespace AmbilKtm
             for (nLoop = 0; nLoop < 256; nLoop++)
                 cEpcWordptr.Items.Add(Convert.ToString(nLoop));
             cEpcWordptr.SelectedIndex = 2;
-            for (nLoop = 0; nLoop < 256; nLoop++)
+            for (nLoop = 0; nLoop < 3; nLoop++)
                 cEpcWordcnt.Items.Add(Convert.ToString(nLoop));
-            cEpcWordcnt.SelectedIndex = 6;
+            cEpcWordcnt.SelectedIndex = 2;
         }
 
         private void bRs232Discon_Click(object sender, EventArgs e)
@@ -319,9 +333,6 @@ namespace AmbilKtm
 
             bReset.Enabled = false;
 
-
-
-            bEpcId.Enabled = false;
             bEpcRead.Enabled = false;
             bEpcWrite.Enabled = false;
             
@@ -350,7 +361,7 @@ namespace AmbilKtm
                         s = string.Format("{0:X2} ", IsoBuf[i, j]);
                         s1 += s;
                     }
-                    lInfo.Items.Add(s1);
+                    //lInfo.Items.Add(s1);
                     ListViewItem lviList = new ListViewItem();
                     if (lvTagList.Items.Count <= 0)
                     {
@@ -422,7 +433,7 @@ namespace AmbilKtm
                         s = string.Format("{0:X2} ", IsoBuf[i, j]);
                         s1 += s;
                     }
-                    lInfo.Items.Add(s1);
+                    //lInfo.Items.Add(s1);
                     ListViewItem lviList = new ListViewItem();
                     if (lvTagList.Items.Count <= 0)
                     {
@@ -471,7 +482,8 @@ namespace AmbilKtm
         {
             if (Reader1.CheckPing() > 0)
             {
-                lInfo.Items.Add("Reader already dropped");
+                MessageBox.Show("Reader already dropped");
+               // lInfo.Items.Add("Reader already dropped");
                 // If you are identifying label,can immediately stop.
                 if (1 == EpcReading)
                 {
