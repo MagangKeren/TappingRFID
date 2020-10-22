@@ -491,5 +491,11 @@ namespace AmbilKtm
                 }
             }
         }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            Form1 home = new Form1();
+            home.ShowDialog();
+        }
     }
 }
