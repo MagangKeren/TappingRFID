@@ -308,6 +308,8 @@ namespace AmbilKtm
 
         private void Device2_Load(object sender, EventArgs e)
         {
+            cekHakAkases();
+
             cCommPort.SelectedIndex = 0;
             cBaudrate.SelectedIndex = 0;
             bRs232Con.Enabled = true;
@@ -326,6 +328,20 @@ namespace AmbilKtm
             for (nLoop = 0; nLoop < 3; nLoop++)
                 cEpcWordcnt.Items.Add(Convert.ToString(nLoop));
             cEpcWordcnt.SelectedIndex = 2;
+        }
+
+        private void cekHakAkases()
+        {
+            if (cVarGlobal.isAplication == "Akademik")
+            {
+                rbMahasiswa.Checked = true;
+                rbPegawai.Enabled = false;
+            }
+            else if (cVarGlobal.isAplication == "Biro Umum")
+            {
+                rbPegawai.Checked = true;
+                rbMahasiswa.Enabled = false;
+            }
         }
 
         private void bRs232Discon_Click(object sender, EventArgs e)
