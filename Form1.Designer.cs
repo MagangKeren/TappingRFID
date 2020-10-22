@@ -366,8 +366,9 @@
             this.blokirKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tulisKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.device2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cetakKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.device2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.device3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cetakKartuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GbSumberData = new System.Windows.Forms.GroupBox();
             this.txtrfid = new System.Windows.Forms.TextBox();
             this.rbMahasiswa = new System.Windows.Forms.RadioButton();
@@ -4162,8 +4163,7 @@
             this.helpToolStripMenuItem,
             this.blokirKartuToolStripMenuItem,
             this.tulisKartuToolStripMenuItem,
-            this.cetakKartuToolStripMenuItem,
-            this.device2ToolStripMenuItem});
+            this.cetakKartuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -4333,7 +4333,9 @@
             // tulisKartuToolStripMenuItem
             // 
             this.tulisKartuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.device2ToolStripMenuItem1});
+            this.device2ToolStripMenuItem1,
+            this.device2ToolStripMenuItem,
+            this.device3ToolStripMenuItem});
             this.tulisKartuToolStripMenuItem.Name = "tulisKartuToolStripMenuItem";
             this.tulisKartuToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.tulisKartuToolStripMenuItem.Text = "Tulis Kartu";
@@ -4343,8 +4345,21 @@
             // 
             this.device2ToolStripMenuItem1.Name = "device2ToolStripMenuItem1";
             this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
-            this.device2ToolStripMenuItem1.Text = "Device 2";
+            this.device2ToolStripMenuItem1.Text = "Device 1";
             this.device2ToolStripMenuItem1.Click += new System.EventHandler(this.device2ToolStripMenuItem1_Click);
+            // 
+            // device2ToolStripMenuItem
+            // 
+            this.device2ToolStripMenuItem.Name = "device2ToolStripMenuItem";
+            this.device2ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.device2ToolStripMenuItem.Text = "Device 2";
+            this.device2ToolStripMenuItem.Click += new System.EventHandler(this.device2ToolStripMenuItem_Click);
+            // 
+            // device3ToolStripMenuItem
+            // 
+            this.device3ToolStripMenuItem.Name = "device3ToolStripMenuItem";
+            this.device3ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.device3ToolStripMenuItem.Text = "Device 3";
             // 
             // cetakKartuToolStripMenuItem
             // 
@@ -4352,12 +4367,6 @@
             this.cetakKartuToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
             this.cetakKartuToolStripMenuItem.Text = "Cetak Kartu";
             this.cetakKartuToolStripMenuItem.Visible = false;
-            // 
-            // device2ToolStripMenuItem
-            // 
-            this.device2ToolStripMenuItem.Name = "device2ToolStripMenuItem";
-            this.device2ToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.device2ToolStripMenuItem.Text = "Device 2";
             // 
             // GbSumberData
             // 
@@ -5405,8 +5414,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripMenuItem device2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem device2ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem device2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem device3ToolStripMenuItem;
     }
 }
 
