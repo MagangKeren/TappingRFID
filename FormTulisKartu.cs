@@ -1216,5 +1216,10 @@ namespace AmbilKtm
         {
             clearTampilan();
         }
+
+        private void DGList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
