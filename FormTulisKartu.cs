@@ -774,7 +774,7 @@ namespace AmbilKtm
                 if ((textBox4.Text.Length) != 2 || ((textBox5.Text.Length) != 2))
                 {
                     //StatusBar1.Panels[0].Text = "TID Parameter Error！";
-                    
+
                     return;
                 }
             }
@@ -1150,7 +1150,7 @@ namespace AmbilKtm
                 return;
             }
 
-                if (btnCek.Text == "Cek")
+            if (btnCek.Text == "Cek")
             {
                 ListView1_EPC.Items.Clear();
                 lblMatch.Text = "";
