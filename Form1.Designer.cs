@@ -4342,7 +4342,7 @@
             // device2ToolStripMenuItem1
             // 
             this.device2ToolStripMenuItem1.Name = "device2ToolStripMenuItem1";
-            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(141, 26);
+            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.device2ToolStripMenuItem1.Text = "Device 2";
             this.device2ToolStripMenuItem1.Click += new System.EventHandler(this.device2ToolStripMenuItem1_Click);
             // 
