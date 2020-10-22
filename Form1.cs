@@ -6027,8 +6027,7 @@ namespace AmbilKtm
 
         private void tulisKartuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormTulisKartu frm = new FormTulisKartu();
-            frm.ShowDialog();
+           
         }
 
         private void blokirKartuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -6857,6 +6856,13 @@ namespace AmbilKtm
 
         //masuk ke device 2
         private void device2ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormTulisKartu frm = new FormTulisKartu();
+            frm.ShowDialog();
+            
+        }
+
+        private void device2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Device2 frm = new Device2();
             frm.ShowDialog();
