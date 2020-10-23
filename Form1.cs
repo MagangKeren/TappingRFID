@@ -6867,5 +6867,11 @@ namespace AmbilKtm
             Device2 frm = new Device2();
             frm.ShowDialog();
         }
+
+        private void device3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Device3 ny = new Device3();
+            ny.ShowDialog();
+        }
     }
 }
