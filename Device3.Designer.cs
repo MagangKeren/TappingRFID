@@ -543,7 +543,7 @@
             this.Port,
             this.Manufacturername});
             this.StatusBar1.ShowPanels = true;
-            this.StatusBar1.Size = new System.Drawing.Size(1480, 38);
+            this.StatusBar1.Size = new System.Drawing.Size(1366, 38);
             this.StatusBar1.TabIndex = 45;
             this.StatusBar1.Text = "StatusBar1";
             // 
@@ -575,7 +575,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1480, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1366, 31);
             this.toolStrip1.TabIndex = 61;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -920,7 +920,7 @@
             this.PnlTop.Location = new System.Drawing.Point(0, 31);
             this.PnlTop.Margin = new System.Windows.Forms.Padding(4);
             this.PnlTop.Name = "PnlTop";
-            this.PnlTop.Size = new System.Drawing.Size(1480, 62);
+            this.PnlTop.Size = new System.Drawing.Size(1366, 62);
             this.PnlTop.TabIndex = 63;
             // 
             // GbSumberData
@@ -1498,7 +1498,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1480, 840);
+            this.ClientSize = new System.Drawing.Size(1366, 840);
             this.Controls.Add(this.groupBox31);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.GbPencarian);

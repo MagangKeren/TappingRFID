@@ -77,6 +77,10 @@ namespace AmbilKtm
                 rbPegawai.Checked = true;
                 rbMahasiswa.Enabled = false;
             }
+            else
+            {
+                rbMahasiswa.Checked = true;
+            }
         }
 
         private void OpenPort_Click(object sender, EventArgs e)
@@ -248,6 +252,9 @@ namespace AmbilKtm
 
         private void Device3_Load(object sender, EventArgs e)
         {
+            cekHakAkases();
+
+
             fOpenComIndex = -1;
             fComAdr = 0;
             ferrorcode = -1;
