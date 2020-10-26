@@ -381,7 +381,7 @@
             // 
             this.clhTagData.Text = "Tag Data";
             this.clhTagData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.clhTagData.Width = 71;
+            this.clhTagData.Width = 119;
             // 
             // clhTimes
             // 
