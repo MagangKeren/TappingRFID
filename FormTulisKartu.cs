@@ -1217,7 +1217,7 @@ namespace AmbilKtm
             clearTampilan();
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void DGList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
