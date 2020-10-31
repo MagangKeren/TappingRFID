@@ -1611,38 +1611,6 @@ namespace AmbilKtm
                      "(completely write Data successfully)";
             }
 
-            //if (txtRfid.Text == string.Empty)
-            //    {
-            //        MessageBox.Show("Kode RFID kosong, silahkan generate terlebih dahulu", "BSI UMY", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        return;
-            //    }
-            //    byte[] WriteEPC = new byte[100];
-            //    byte WriteEPClen;
-            //    byte ENum;
-
-            //    if (Edit_AccessCode3.Text.Length < 8)
-            //    {
-            //        MessageBox.Show("Access Password Less Than 8 digit!Please input again!", "Information");
-            //        return;
-            //    }
-            //    if ((txtRfid.Text.Length % 4) != 0)
-            //    {
-            //        MessageBox.Show("Please input Data in words in hexadecimal form!", "Information");
-            //        return;
-            //    }
-            //    WriteEPClen = Convert.ToByte(txtRfid.Text.Length / 2);
-            //    ENum = Convert.ToByte(txtRfid.Text.Length / 4);
-            //    byte[] EPC = new byte[ENum];
-            //    EPC = HexStringToByteArray(txtRfid.Text);
-            //    fPassWord = HexStringToByteArray(Edit_AccessCode3.Text);
-            //    fCmdRet = StaticClassReaderB.WriteEPC_G2(ref fComAdr, fPassWord, EPC, WriteEPClen, ref ferrorcode, frmcomportindex);
-            //    AddCmdLog("WriteEPC_G2", "Write EPC", fCmdRet);
-            //if (fCmdRet == 0)
-            //    StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Write EPC'Command Response=0x00" +
-            //              "(Write EPC successfully)";
-
-               
-
         }
 
         private byte[] HexStringToByteArray(string s)
