@@ -40,10 +40,12 @@ namespace AmbilKtm
         private bool ComOpen = false;
         private bool clearGrid = false;
         private string lama;//variable utk menampung kodeRfid hasil scan sebelumnya
+        public string dataBaca = "";
 
         public Device3()
         {
             InitializeComponent();
+            Edit_WordPtr.Text = "02";
         }
 
         private void InitComList()
@@ -575,6 +577,8 @@ namespace AmbilKtm
                             isonlistview = true;
                         }
                     }
+                    //dataBaca = sEPC;
+
                     if (!isonlistview)
                     {
                         aListItem = ListView1_EPC.Items.Add((ListView1_EPC.Items.Count + 1).ToString());
@@ -600,6 +604,7 @@ namespace AmbilKtm
 
                     }
                 }
+                
             }
             if (!CheckBox_TID.Checked)
             {
@@ -1515,123 +1520,129 @@ namespace AmbilKtm
 
         private void Button_DataWrite_Click(object sender, EventArgs e)
         {
-            if (txtRfid.Text == string.Empty)
-            {
-                MessageBox.Show("Kode RFID kosong, silahkan generate terlebih dahulu", "BSI UMY", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            byte[] WriteEPC = new byte[100];
+            byte WordPtr, ENum;
+            byte Num = 0;
+            byte Mem = 0;
+            byte WNum = 0;
+            byte EPClength = 0;
+            byte Writedatalen = 0;
+            int WrittenDataNum = 0;
             byte WriteEPClen;
-            byte ENum;
-            if (Edit_AccessCode3.Text.Length < 8)
+            string s2, str;
+            byte[] CardData = new byte[320];
+            byte[] writedata = new byte[230];
+            if ((maskadr_textbox.Text == "") || (maskLen_textBox.Text == ""))
             {
-                MessageBox.Show("Access Password Less Than 8 digit!Please input again!", "Information");
+                fIsInventoryScan = false;
                 return;
             }
-            if ((txtRfid.Text.Length % 4) != 0)
+            if (checkBox1.Checked)
+                MaskFlag = 1;
+            else
+                MaskFlag = 0;
+            Maskadr = Convert.ToByte(maskadr_textbox.Text, 16);
+            MaskLen = Convert.ToByte(maskLen_textBox.Text, 16);
+            if (ComboBox_EPC2.Items.Count == 0)
+                return;
+            if (ComboBox_EPC2.SelectedItem == null)
+                return;
+            str = ComboBox_EPC2.SelectedItem.ToString();
+            if (str == "")
+                return;
+            ENum = Convert.ToByte(str.Length / 4);
+            EPClength = Convert.ToByte(ENum * 2);
+            byte[] EPC = new byte[ENum];
+            EPC = HexStringToByteArray(str);
+            if (C_Reserve.Checked)
+                Mem = 0;
+            if (C_EPC.Checked)
+                Mem = 1;
+            if (C_TID.Checked)
+                Mem = 2;
+            if (C_User.Checked)
+                Mem = 3;
+            if (Edit_WordPtr.Text == "")
             {
-                MessageBox.Show("Please input Data in words in hexadecimal form!", "Information");
+                MessageBox.Show("Address of Tag Data is NULL", "Information");
+                return;
+            }
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Length of Data(Read/Block Erase) is NULL", "Information");
+                return;
+            }
+            if (Convert.ToInt32(Edit_WordPtr.Text) + Convert.ToInt32(textBox1.Text) > 120)
+                return;
+            if (Edit_AccessCode2.Text == "")
+            {
+                return;
+            }
+            WordPtr = Convert.ToByte(Edit_WordPtr.Text, 16);
+            Num = Convert.ToByte(textBox1.Text);
+            if (Edit_AccessCode2.Text.Length != 8)
+            {
+                return;
+            }
+            fPassWord = HexStringToByteArray(Edit_AccessCode2.Text);
+            if (Edit_WriteData.Text == "")
+                return;
+            s2 = txtRfid.Text;
+            if (s2.Length % 4 != 0)
+            {
+                MessageBox.Show("The Number must be 4 times.", "Write");
                 return;
             }
             WriteEPClen = Convert.ToByte(txtRfid.Text.Length / 2);
-            ENum = Convert.ToByte(txtRfid.Text.Length / 4);
-            byte[] EPC = new byte[ENum];
-            EPC = HexStringToByteArray(txtRfid.Text);
-            fPassWord = HexStringToByteArray(Edit_AccessCode3.Text);
-            fCmdRet = StaticClassReaderB.WriteEPC_G2(ref fComAdr, fPassWord, EPC, WriteEPClen, ref ferrorcode, frmcomportindex);
+            WNum = Convert.ToByte(s2.Length / 4);
+            byte[] Writedata = new byte[WNum * 2];
+            Writedata = HexStringToByteArray(s2);
+            Writedatalen = Convert.ToByte(WNum * 2);
+            if ((checkBox_pc.Checked) && (C_EPC.Checked))
+            {
+                WordPtr = 1;
+                Writedatalen = Convert.ToByte(Edit_WriteData.Text.Length / 2 + 2);
+                Writedata = HexStringToByteArray(textBox_pc.Text + Edit_WriteData.Text);
+            }
+            fCmdRet = StaticClassReaderB.WriteCard_G2(ref fComAdr, EPC, Mem, WordPtr, Writedatalen, Writedata, fPassWord, Maskadr, MaskLen, MaskFlag, WrittenDataNum, EPClength, ref ferrorcode, frmcomportindex);
             AddCmdLog("WriteEPC_G2", "Write EPC", fCmdRet);
             if (fCmdRet == 0)
-                StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Write EPC'Command Response=0x00" +
-                          "(Write EPC successfully)";
+            {
+                StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + "'Write'Command Response=0x00" +
+                     "(completely write Data successfully)";
+            }
 
-            //byte WordPtr, ENum;
-            //byte Num = 0;
-            //byte Mem = 0;
-            //byte WNum = 0;
-            //byte EPClength = 0;
-            //byte Writedatalen = 0;
-            //int WrittenDataNum = 0;
-            //string s2, str;
-            //byte[] CardData = new byte[320];
-            //byte[] writedata = new byte[230];
-            //if ((maskadr_textbox.Text == "") || (maskLen_textBox.Text == ""))
-            //{
-            //    fIsInventoryScan = false;
-            //    return;
-            //}
-            //if (checkBox1.Checked)
-            //    MaskFlag = 1;
-            //else
-            //    MaskFlag = 0;
-            //Maskadr = Convert.ToByte(maskadr_textbox.Text, 16);
-            //MaskLen = Convert.ToByte(maskLen_textBox.Text, 16);
-            //if (ComboBox_EPC2.Items.Count == 0)
-            //    return;
-            //if (ComboBox_EPC2.SelectedItem == null)
-            //    return;
-            //str = ComboBox_EPC2.SelectedItem.ToString();
-            //if (str == "")
-            //    return;
-            //ENum = Convert.ToByte(str.Length / 4);
-            //EPClength = Convert.ToByte(ENum * 2);
-            //byte[] EPC = new byte[ENum];
-            //EPC = HexStringToByteArray(str);
-            //if (C_Reserve.Checked)
-            //    Mem = 0;
-            //if (C_EPC.Checked)
-            //    Mem = 1;
-            //if (C_TID.Checked)
-            //    Mem = 2;
-            //if (C_User.Checked)
-            //    Mem = 3;
-            //if (Edit_WordPtr.Text == "")
-            //{
-            //    MessageBox.Show("Address of Tag Data is NULL", "Information");
-            //    return;
-            //}
-            //if (textBox1.Text == "")
-            //{
-            //    MessageBox.Show("Length of Data(Read/Block Erase) is NULL", "Information");
-            //    return;
-            //}
-            //if (Convert.ToInt32(Edit_WordPtr.Text) + Convert.ToInt32(textBox1.Text) > 120)
-            //    return;
-            //if (Edit_AccessCode2.Text == "")
-            //{
-            //    return;
-            //}
-            //WordPtr = Convert.ToByte(Edit_WordPtr.Text, 16);
-            //Num = Convert.ToByte(textBox1.Text);
-            //if (Edit_AccessCode2.Text.Length != 8)
-            //{
-            //    return;
-            //}
-            //fPassWord = HexStringToByteArray(Edit_AccessCode2.Text);
-            //if (Edit_WriteData.Text == "")
-            //    return;
-            //s2 = Edit_WriteData.Text;
-            //if (s2.Length % 4 != 0)
-            //{
-            //    MessageBox.Show("The Number must be 4 times.", "Write");
-            //    return;
-            //}
-            //WNum = Convert.ToByte(s2.Length / 4);
-            //byte[] Writedata = new byte[WNum * 2];
-            //Writedata = HexStringToByteArray(s2);
-            //Writedatalen = Convert.ToByte(WNum * 2);
-            //if ((checkBox_pc.Checked) && (C_EPC.Checked))
-            //{
-            //    WordPtr = 1;
-            //    Writedatalen = Convert.ToByte(Edit_WriteData.Text.Length / 2 + 2);
-            //    Writedata = HexStringToByteArray(textBox_pc.Text + Edit_WriteData.Text);
-            //}
-            //fCmdRet = StaticClassReaderB.WriteCard_G2(ref fComAdr, EPC, Mem, WordPtr, Writedatalen, Writedata, fPassWord, Maskadr, MaskLen, MaskFlag, WrittenDataNum, EPClength, ref ferrorcode, frmcomportindex);
-            //AddCmdLog("Write data", "Write", fCmdRet, ferrorcode);
+            //if (txtRfid.Text == string.Empty)
+            //    {
+            //        MessageBox.Show("Kode RFID kosong, silahkan generate terlebih dahulu", "BSI UMY", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+            //    byte[] WriteEPC = new byte[100];
+            //    byte WriteEPClen;
+            //    byte ENum;
+
+            //    if (Edit_AccessCode3.Text.Length < 8)
+            //    {
+            //        MessageBox.Show("Access Password Less Than 8 digit!Please input again!", "Information");
+            //        return;
+            //    }
+            //    if ((txtRfid.Text.Length % 4) != 0)
+            //    {
+            //        MessageBox.Show("Please input Data in words in hexadecimal form!", "Information");
+            //        return;
+            //    }
+            //    WriteEPClen = Convert.ToByte(txtRfid.Text.Length / 2);
+            //    ENum = Convert.ToByte(txtRfid.Text.Length / 4);
+            //    byte[] EPC = new byte[ENum];
+            //    EPC = HexStringToByteArray(txtRfid.Text);
+            //    fPassWord = HexStringToByteArray(Edit_AccessCode3.Text);
+            //    fCmdRet = StaticClassReaderB.WriteEPC_G2(ref fComAdr, fPassWord, EPC, WriteEPClen, ref ferrorcode, frmcomportindex);
+            //    AddCmdLog("WriteEPC_G2", "Write EPC", fCmdRet);
             //if (fCmdRet == 0)
-            //{
-            //    StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + "'Write'Command Response=0x00" +
-            //         "(completely write Data successfully)";
-            //}
+            //    StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Write EPC'Command Response=0x00" +
+            //              "(Write EPC successfully)";
+
+               
+
         }
 
         private byte[] HexStringToByteArray(string s)
@@ -2036,5 +2047,6 @@ namespace AmbilKtm
             if (fAppClosed)
                 Close();
         }
+
     }
 }
