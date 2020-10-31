@@ -4344,21 +4344,21 @@
             // device2ToolStripMenuItem1
             // 
             this.device2ToolStripMenuItem1.Name = "device2ToolStripMenuItem1";
-            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(252, 30);
+            this.device2ToolStripMenuItem1.Size = new System.Drawing.Size(163, 30);
             this.device2ToolStripMenuItem1.Text = "Device 1";
             this.device2ToolStripMenuItem1.Click += new System.EventHandler(this.device2ToolStripMenuItem1_Click);
             // 
             // device2ToolStripMenuItem
             // 
             this.device2ToolStripMenuItem.Name = "device2ToolStripMenuItem";
-            this.device2ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.device2ToolStripMenuItem.Size = new System.Drawing.Size(163, 30);
             this.device2ToolStripMenuItem.Text = "Device 2";
             this.device2ToolStripMenuItem.Click += new System.EventHandler(this.device2ToolStripMenuItem_Click);
             // 
             // device3ToolStripMenuItem
             // 
             this.device3ToolStripMenuItem.Name = "device3ToolStripMenuItem";
-            this.device3ToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.device3ToolStripMenuItem.Size = new System.Drawing.Size(163, 30);
             this.device3ToolStripMenuItem.Text = "Device 3";
             this.device3ToolStripMenuItem.Click += new System.EventHandler(this.device3ToolStripMenuItem_Click);
             // 

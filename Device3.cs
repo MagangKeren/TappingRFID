@@ -40,10 +40,12 @@ namespace AmbilKtm
         private bool ComOpen = false;
         private bool clearGrid = false;
         private string lama;//variable utk menampung kodeRfid hasil scan sebelumnya
+        public string dataBaca = "";
 
         public Device3()
         {
             InitializeComponent();
+            Edit_WordPtr.Text = "02";
         }
 
         private void InitComList()
@@ -76,6 +78,10 @@ namespace AmbilKtm
             {
                 rbPegawai.Checked = true;
                 rbMahasiswa.Enabled = false;
+            }
+            else
+            {
+                rbMahasiswa.Checked = true;
             }
         }
 
@@ -248,6 +254,9 @@ namespace AmbilKtm
 
         private void Device3_Load(object sender, EventArgs e)
         {
+            cekHakAkases();
+
+
             fOpenComIndex = -1;
             fComAdr = 0;
             ferrorcode = -1;
@@ -267,10 +276,10 @@ namespace AmbilKtm
             fisinventoryscan_6B = false;
             fTimer_6B_ReadWrite = false;
 
-            //Timer_Test_.Enabled = false;
-            //Timer_G2_Read.Enabled = false;
-            //Timer_G2_Alarm.Enabled = false;
-            //timer1.Enabled = false;
+            Timer_Test_.Enabled = false;
+            Timer_G2_Read.Enabled = false;
+            Timer_G2_Alarm.Enabled = false;
+            timer1.Enabled = false;
 
 
             button2.Enabled = false;
@@ -291,7 +300,7 @@ namespace AmbilKtm
             //Different_6B.Enabled = false;
             //Less_6B.Enabled = false;
             //Greater_6B.Enabled = false;
-            //ComboBox_baud2.SelectedIndex = 3;
+            ComboBox_baud2.SelectedIndex = 3;
         }
 
         private void ClosePort_Click(object sender, EventArgs e)
@@ -392,12 +401,62 @@ namespace AmbilKtm
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (Edit_WordPtr.Text == "")
+            {
+                MessageBox.Show("Address of Tag Data is NULL", "Information");
+                return;
+            }
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Length of Data(Read/Block Erase) is NULL", "Information");
+                return;
+            }
+            if (Edit_AccessCode2.Text == "")
+            {
+                MessageBox.Show("(PassWord) is NULL", "Information");
+                return;
+            }
+            if (Convert.ToInt32(Edit_WordPtr.Text, 16) + Convert.ToInt32(textBox1.Text) > 120)
+                return;
+            Timer_G2_Read.Enabled = !Timer_G2_Read.Enabled;
+            if (Timer_G2_Read.Enabled)
+            {
+                //button2.Enabled = false;
+                Button_DataWrite.Enabled = false;
+                BlockWrite.Enabled = false;
+                Button_BlockErase.Enabled = false;
+
+                SpeedButton_Read_G2.Text = "Stop";
+            }
+            else
+            {
+                if (ListView1_EPC.Items.Count != 0)
+                {
+
+                    button2.Enabled = true;
+
+                    Button_DataWrite.Enabled = true;
+                    BlockWrite.Enabled = true;
+                    Button_BlockErase.Enabled = true;
+                }
+                if (ListView1_EPC.Items.Count == 0)
+                {
+
+                    button2.Enabled = true;
+                    Button_DataWrite.Enabled = false;
+                    BlockWrite.Enabled = false;
+                    Button_BlockErase.Enabled = false;
+
+
+                }
+                SpeedButton_Read_G2.Text = "Read";
+            }
+
             if (CheckBox_TID.Checked)
             {
                 if ((textBox4.Text.Length) != 2 || ((textBox5.Text.Length) != 2))
                 {
                     StatusBar1.Panels[0].Text = "TID Parameter Error！";
-
                     return;
                 }
             }
@@ -407,10 +466,29 @@ namespace AmbilKtm
                 textBox4.Enabled = true;
                 textBox5.Enabled = true;
                 CheckBox_TID.Enabled = true;
+                if (ListView1_EPC.Items.Count != 0)
+                {
 
+                    SpeedButton_Read_G2.Enabled = true;
+
+                    Button_DataWrite.Enabled = true;
+                    BlockWrite.Enabled = true;
+                    Button_BlockErase.Enabled = true;
+                    checkBox1.Enabled = true;
+                }
+                if (ListView1_EPC.Items.Count == 0)
+                {
+
+                    SpeedButton_Read_G2.Enabled = false;
+                    Button_DataWrite.Enabled = false;
+                    BlockWrite.Enabled = false;
+                    Button_BlockErase.Enabled = false;
+
+                    checkBox1.Enabled = false;
+
+                }
                 AddCmdLog("Inventory", "Exit Query", 0);
                 button2.Text = "Query Tag";
-                btnCek.Text = "Cek";
             }
             else
             {
@@ -418,8 +496,16 @@ namespace AmbilKtm
                 textBox5.Enabled = false;
                 CheckBox_TID.Enabled = false;
 
+                SpeedButton_Read_G2.Enabled = false;
+                Button_DataWrite.Enabled = false;
+                BlockWrite.Enabled = false;
+                Button_BlockErase.Enabled = false;
+
+                ListView1_EPC.Items.Clear();
+
+                ComboBox_EPC2.Items.Clear();
+
                 button2.Text = "Stop";
-                btnCek.Text = "Stop";
                 checkBox1.Enabled = false;
             }
         }
@@ -452,16 +538,7 @@ namespace AmbilKtm
                 TIDFlag = 0;
             }
             ListViewItem aListItem = new ListViewItem();
-
-            fCmdRet = StaticClassReaderB.Inventory_G2(ref fComAdr, AdrTID, LenTID, TIDFlag, EPC, ref Totallen, ref CardNum, frmcomportindex);      //bunyi beeb ketika detect kartu  
-
-            if (fCmdRet == 48) // disconnect to scanner
-            {
-                MessageBox.Show("Koneksi scanner putus! Cek koneksi dan restart Aplikasi", "BSI UMY", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Timer_Test_.Enabled = false;
-                Close();
-            }
-
+            fCmdRet = StaticClassReaderB.Inventory_G2(ref fComAdr, AdrTID, LenTID, TIDFlag, EPC, ref Totallen, ref CardNum, frmcomportindex);
             if ((fCmdRet == 1) | (fCmdRet == 2) | (fCmdRet == 3) | (fCmdRet == 4) | (fCmdRet == 0xFB))//代表已查找结束，
             {
                 byte[] daw = new byte[Totallen];
@@ -469,6 +546,7 @@ namespace AmbilKtm
                 temps = ByteArrayToHexString(daw);
                 fInventory_EPC_List = temps;            //存贮记录
                 m = 0;
+
                 /*   while (ListView1_EPC.Items.Count < CardNum)
                   {
                       aListItem = ListView1_EPC.Items.Add((ListView1_EPC.Items.Count + 1).ToString());
@@ -486,12 +564,6 @@ namespace AmbilKtm
                 {
                     EPClen = daw[m];
                     sEPC = temps.Substring(m * 2 + 2, EPClen * 2);
-
-                    //========================================
-                    //txtrfid.Text = sEPC;
-                    CekKodeRFID(sEPC);//cek ke DB
-                    //=========================================
-
                     m = m + EPClen + 1;
                     if (sEPC.Length != EPClen * 2)
                         return;
@@ -505,6 +577,8 @@ namespace AmbilKtm
                             isonlistview = true;
                         }
                     }
+                    //dataBaca = sEPC;
+
                     if (!isonlistview)
                     {
                         aListItem = ListView1_EPC.Items.Add((ListView1_EPC.Items.Count + 1).ToString());
@@ -515,34 +589,35 @@ namespace AmbilKtm
                         ChangeSubItem(aListItem, 1, s);
                         s = (sEPC.Length / 2).ToString().PadLeft(2, '0');
                         ChangeSubItem(aListItem, 2, s);
-                        //if (!CheckBox_TID.Checked)
-                        //{
-                        //    if (ComboBox_EPC1.Items.IndexOf(sEPC) == -1)
-                        //    {
-                        //        ComboBox_EPC1.Items.Add(sEPC);
-                        //        ComboBox_EPC2.Items.Add(sEPC);
-                        //        ComboBox_EPC3.Items.Add(sEPC);
-                        //        ComboBox_EPC4.Items.Add(sEPC);
-                        //        ComboBox_EPC5.Items.Add(sEPC);
-                        //        ComboBox_EPC6.Items.Add(sEPC);
-                        //    }
-                        //}
+                        if (!CheckBox_TID.Checked)
+                        {
+                            if (ComboBox_EPC2.Items.IndexOf(sEPC) == -1)
+                            {
+                                //ComboBox_EPC1.Items.Add(sEPC);
+                                ComboBox_EPC2.Items.Add(sEPC);
+                                //ComboBox_EPC3.Items.Add(sEPC);
+                                //ComboBox_EPC4.Items.Add(sEPC);
+                                //ComboBox_EPC5.Items.Add(sEPC);
+                                //ComboBox_EPC6.Items.Add(sEPC);
+                            }
+                        }
 
                     }
                 }
+                
             }
-            //if (!CheckBox_TID.Checked)
-            //{
-            //    if ((ComboBox_EPC1.Items.Count != 0))
-            //    {
-            //        ComboBox_EPC1.SelectedIndex = 0;
-            //        ComboBox_EPC2.SelectedIndex = 0;
-            //        ComboBox_EPC3.SelectedIndex = 0;
-            //        ComboBox_EPC4.SelectedIndex = 0;
-            //        ComboBox_EPC5.SelectedIndex = 0;
-            //        ComboBox_EPC6.SelectedIndex = 0;
-            //    }
-            //}
+            if (!CheckBox_TID.Checked)
+            {
+                if ((ComboBox_EPC2.Items.Count != 0))
+                {
+                    //ComboBox_EPC1.SelectedIndex = 0;
+                    ComboBox_EPC2.SelectedIndex = 0;
+                    //ComboBox_EPC3.SelectedIndex = 0;
+                    //ComboBox_EPC4.SelectedIndex = 0;
+                    //ComboBox_EPC5.SelectedIndex = 0;
+                    //ComboBox_EPC6.SelectedIndex = 0;
+                }
+            }
             fIsInventoryScan = false;
             if (fAppClosed)
                 Close();
@@ -687,6 +762,25 @@ namespace AmbilKtm
             //===============================================================
         }
 
+        private string GetErrorCodeDesc(int cmdRet)
+        {
+            switch (cmdRet)
+            {
+                case 0x00:
+                    return "Other error";
+                case 0x03:
+                    return "Memory out or pc not support";
+                case 0x04:
+                    return "Memory Locked and unwritable";
+                case 0x0b:
+                    return "No Power,memory write operation cannot be executed";
+                case 0x0f:
+                    return "Not Special Error,tag not support special errorcode";
+                default:
+                    return "";
+            }
+        }
+
         private string GetReturnCodeDesc(int cmdRet)
         {
             switch (cmdRet)
@@ -807,7 +901,7 @@ namespace AmbilKtm
 
         private void btnTulis_Click(object sender, EventArgs e)
         {
-
+            Button_DataWrite_Click(sender, e);
         }
 
         private void btnCari_Click(object sender, EventArgs e)
@@ -1369,5 +1463,590 @@ namespace AmbilKtm
                 generateRfidPegawai();
             }
         }
+
+        private void SpeedButton_Read_G2_Click(object sender, EventArgs e)
+        {
+            if (Edit_WordPtr.Text == "")
+            {
+                MessageBox.Show("Address of Tag Data is NULL", "Information");
+                return;
+            }
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Length of Data(Read/Block Erase) is NULL", "Information");
+                return;
+            }
+            if (Edit_AccessCode2.Text == "")
+            {
+                MessageBox.Show("(PassWord) is NULL", "Information");
+                return;
+            }
+            if (Convert.ToInt32(Edit_WordPtr.Text, 16) + Convert.ToInt32(textBox1.Text) > 120)
+                return;
+            Timer_G2_Read.Enabled = !Timer_G2_Read.Enabled;
+            if (Timer_G2_Read.Enabled)
+            {
+                button2.Enabled = false;
+                Button_DataWrite.Enabled = false;
+                BlockWrite.Enabled = false;
+                Button_BlockErase.Enabled = false;
+
+                SpeedButton_Read_G2.Text = "Stop";
+            }
+            else
+            {
+                if (ListView1_EPC.Items.Count != 0)
+                {
+
+                    button2.Enabled = true;
+
+                    Button_DataWrite.Enabled = true;
+                    BlockWrite.Enabled = true;
+                    Button_BlockErase.Enabled = true;
+                }
+                if (ListView1_EPC.Items.Count == 0)
+                {
+
+                    button2.Enabled = true;
+                    Button_DataWrite.Enabled = false;
+                    BlockWrite.Enabled = false;
+                    Button_BlockErase.Enabled = false;
+
+
+                }
+                SpeedButton_Read_G2.Text = "Read";
+            }
+        }
+
+        private void Button_DataWrite_Click(object sender, EventArgs e)
+        {
+            byte WordPtr, ENum;
+            byte Num = 0;
+            byte Mem = 0;
+            byte WNum = 0;
+            byte EPClength = 0;
+            byte Writedatalen = 0;
+            int WrittenDataNum = 0;
+            byte WriteEPClen;
+            string s2, str;
+            byte[] CardData = new byte[320];
+            byte[] writedata = new byte[230];
+            if ((maskadr_textbox.Text == "") || (maskLen_textBox.Text == ""))
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            if (checkBox1.Checked)
+                MaskFlag = 1;
+            else
+                MaskFlag = 0;
+            Maskadr = Convert.ToByte(maskadr_textbox.Text, 16);
+            MaskLen = Convert.ToByte(maskLen_textBox.Text, 16);
+            if (ComboBox_EPC2.Items.Count == 0)
+                return;
+            if (ComboBox_EPC2.SelectedItem == null)
+                return;
+            str = ComboBox_EPC2.SelectedItem.ToString();
+            if (str == "")
+                return;
+            ENum = Convert.ToByte(str.Length / 4);
+            EPClength = Convert.ToByte(ENum * 2);
+            byte[] EPC = new byte[ENum];
+            EPC = HexStringToByteArray(str);
+            if (C_Reserve.Checked)
+                Mem = 0;
+            if (C_EPC.Checked)
+                Mem = 1;
+            if (C_TID.Checked)
+                Mem = 2;
+            if (C_User.Checked)
+                Mem = 3;
+            if (Edit_WordPtr.Text == "")
+            {
+                MessageBox.Show("Address of Tag Data is NULL", "Information");
+                return;
+            }
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Length of Data(Read/Block Erase) is NULL", "Information");
+                return;
+            }
+            if (Convert.ToInt32(Edit_WordPtr.Text) + Convert.ToInt32(textBox1.Text) > 120)
+                return;
+            if (Edit_AccessCode2.Text == "")
+            {
+                return;
+            }
+            WordPtr = Convert.ToByte(Edit_WordPtr.Text, 16);
+            Num = Convert.ToByte(textBox1.Text);
+            if (Edit_AccessCode2.Text.Length != 8)
+            {
+                return;
+            }
+            fPassWord = HexStringToByteArray(Edit_AccessCode2.Text);
+            if (Edit_WriteData.Text == "")
+                return;
+            s2 = txtRfid.Text;
+            if (s2.Length % 4 != 0)
+            {
+                MessageBox.Show("The Number must be 4 times.", "Write");
+                return;
+            }
+            WriteEPClen = Convert.ToByte(txtRfid.Text.Length / 2);
+            WNum = Convert.ToByte(s2.Length / 4);
+            byte[] Writedata = new byte[WNum * 2];
+            Writedata = HexStringToByteArray(s2);
+            Writedatalen = Convert.ToByte(WNum * 2);
+            if ((checkBox_pc.Checked) && (C_EPC.Checked))
+            {
+                WordPtr = 1;
+                Writedatalen = Convert.ToByte(Edit_WriteData.Text.Length / 2 + 2);
+                Writedata = HexStringToByteArray(textBox_pc.Text + Edit_WriteData.Text);
+            }
+            fCmdRet = StaticClassReaderB.WriteCard_G2(ref fComAdr, EPC, Mem, WordPtr, Writedatalen, Writedata, fPassWord, Maskadr, MaskLen, MaskFlag, WrittenDataNum, EPClength, ref ferrorcode, frmcomportindex);
+            AddCmdLog("WriteEPC_G2", "Write EPC", fCmdRet);
+            if (fCmdRet == 0)
+            {
+                StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + "'Write'Command Response=0x00" +
+                     "(completely write Data successfully)";
+            }
+
+            //if (txtRfid.Text == string.Empty)
+            //    {
+            //        MessageBox.Show("Kode RFID kosong, silahkan generate terlebih dahulu", "BSI UMY", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+            //    byte[] WriteEPC = new byte[100];
+            //    byte WriteEPClen;
+            //    byte ENum;
+
+            //    if (Edit_AccessCode3.Text.Length < 8)
+            //    {
+            //        MessageBox.Show("Access Password Less Than 8 digit!Please input again!", "Information");
+            //        return;
+            //    }
+            //    if ((txtRfid.Text.Length % 4) != 0)
+            //    {
+            //        MessageBox.Show("Please input Data in words in hexadecimal form!", "Information");
+            //        return;
+            //    }
+            //    WriteEPClen = Convert.ToByte(txtRfid.Text.Length / 2);
+            //    ENum = Convert.ToByte(txtRfid.Text.Length / 4);
+            //    byte[] EPC = new byte[ENum];
+            //    EPC = HexStringToByteArray(txtRfid.Text);
+            //    fPassWord = HexStringToByteArray(Edit_AccessCode3.Text);
+            //    fCmdRet = StaticClassReaderB.WriteEPC_G2(ref fComAdr, fPassWord, EPC, WriteEPClen, ref ferrorcode, frmcomportindex);
+            //    AddCmdLog("WriteEPC_G2", "Write EPC", fCmdRet);
+            //if (fCmdRet == 0)
+            //    StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Write EPC'Command Response=0x00" +
+            //              "(Write EPC successfully)";
+
+               
+
+        }
+
+        private byte[] HexStringToByteArray(string s)
+        {
+            s = s.Replace(" ", "");
+            byte[] buffer = new byte[s.Length / 2];
+            for (int i = 0; i < s.Length; i += 2)
+                buffer[i / 2] = (byte)Convert.ToByte(s.Substring(i, 2), 16);
+            return buffer;
+        }
+
+        private void AddCmdLog(string CMD, string cmdStr, int cmdRet, int errocode)
+        {
+            try
+            {
+                StatusBar1.Panels[0].Text = "";
+                StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " " +
+                                            cmdStr + ": " +
+                                            GetReturnCodeDesc(cmdRet) + " " + "0x" + Convert.ToString(errocode, 16).PadLeft(2, '0');
+            }
+            finally
+            {
+                ;
+            }
+        }
+
+        private void Inventory_6B()
+        {
+            //int CardNum = 0;
+            //byte[] ID_6B = new byte[2000];
+            //byte[] ID2_6B = new byte[5000];
+            //bool isonlistview;
+            //string temps;
+            //string s, ss, sID;
+            //ListViewItem aListItem = new ListViewItem();
+            //int i, j;
+            //byte Condition = 0;
+            //byte StartAddress;
+            //byte mask = 0;
+            //byte[] ConditionContent = new byte[300];
+            //byte Contentlen;
+            //if (Byone_6B.Checked)
+            //{
+            //    fCmdRet = StaticClassReaderB.Inventory_6B(ref fComAdr, ID_6B, frmcomportindex);
+            //    if (fCmdRet == 0)
+            //    {
+            //        byte[] daw = new byte[8];
+            //        Array.Copy(ID_6B, daw, 8);
+            //        temps = ByteArrayToHexString(daw);
+            //        if (!list.Contains(temps))
+            //        {
+            //            CardNum1 = CardNum1 + 1;
+            //            list.Add(temps);
+            //        }
+            //        while (ListView_ID_6B.Items.Count < CardNum1)
+            //        {
+            //            aListItem = ListView_ID_6B.Items.Add((ListView_ID_6B.Items.Count + 1).ToString());
+            //            aListItem.SubItems.Add("");
+            //            aListItem.SubItems.Add("");
+            //            aListItem.SubItems.Add("");
+            //        }
+            //        isonlistview = false;
+            //        for (i = 0; i < CardNum1; i++)     //判断是否在Listview列表内
+            //        {
+            //            if (temps == ListView_ID_6B.Items[i].SubItems[1].Text)
+            //            {
+            //                aListItem = ListView_ID_6B.Items[i];
+            //                ChangeSubItem1(aListItem, 1, temps);
+            //                isonlistview = true;
+            //            }
+            //        }
+            //        if (!isonlistview)
+            //        {
+            //            // CardNum1 = Convert.ToByte(ListView_ID_6B.Items.Count+1);
+            //            aListItem = ListView_ID_6B.Items[CardNum1 - 1];
+            //            s = temps;
+            //            ChangeSubItem1(aListItem, 1, s);
+
+
+            //        }
+            //    }
+
+            //    if (ComboBox_ID1_6B.Items.Count != 0)
+            //        ComboBox_ID1_6B.SelectedIndex = 0;
+            //}
+            //if (Bycondition_6B.Checked)
+            //{
+            //    if (Same_6B.Checked)
+            //        Condition = 0;
+            //    else if (Different_6B.Checked)
+            //        Condition = 1;
+            //    else if (Greater_6B.Checked)
+            //        Condition = 2;
+            //    else if (Less_6B.Checked)
+            //        Condition = 3;
+            //    if (Edit_ConditionContent_6B.Text == "")
+            //        return;
+            //    ss = Edit_ConditionContent_6B.Text;
+            //    Contentlen = Convert.ToByte((Edit_ConditionContent_6B.Text).Length);
+            //    for (i = 0; i < 16 - Contentlen; i++)
+            //        ss = ss + "0";
+            //    int Nlen = (ss.Length) / 2;
+            //    byte[] daw = new byte[Nlen];
+            //    daw = HexStringToByteArray(ss);
+            //    switch (Contentlen / 2)
+            //    {
+            //        case 1:
+            //            mask = 0x80;
+            //            break;
+            //        case 2:
+            //            mask = 0xC0;
+            //            break;
+            //        case 3:
+            //            mask = 0xE0;
+            //            break;
+            //        case 4:
+            //            mask = 0XF0;
+            //            break;
+            //        case 5:
+            //            mask = 0XF8;
+            //            break;
+            //        case 6:
+            //            mask = 0XFC;
+            //            break;
+            //        case 7:
+            //            mask = 0XFE;
+            //            break;
+            //        case 8:
+            //            mask = 0XFF;
+            //            break;
+            //    }
+            //    if (Edit_Query_StartAddress_6B.Text == "")
+            //        return;
+            //    StartAddress = Convert.ToByte(Edit_Query_StartAddress_6B.Text);
+            //    fCmdRet = StaticClassReaderB.inventory2_6B(ref fComAdr, Condition, StartAddress, mask, daw, ID2_6B, ref CardNum, frmcomportindex);
+            //    if ((fCmdRet == 0x15) | (fCmdRet == 0x16) | (fCmdRet == 0x17) | (fCmdRet == 0x18) | (fCmdRet == 0xFB))
+            //    {
+            //        byte[] daw1 = new byte[CardNum * 8];
+            //        Array.Copy(ID2_6B, daw1, CardNum * 8);
+            //        temps = ByteArrayToHexString(daw1);
+            //        for (i = 0; i < CardNum; i++)
+            //        {
+            //            sID = temps.Substring(16 * i, 16);
+            //            if ((sID.Length) != 16)
+            //                return;
+            //            if (CardNum == 0)
+            //                return;
+            //            while (ListView_ID_6B.Items.Count < CardNum)
+            //            {
+            //                aListItem = ListView_ID_6B.Items.Add((ListView_ID_6B.Items.Count + 1).ToString());
+            //                aListItem.SubItems.Add("");
+            //                aListItem.SubItems.Add("");
+            //                aListItem.SubItems.Add("");
+            //            }
+            //            isonlistview = false;
+            //            for (j = 0; j < ListView_ID_6B.Items.Count; j++)     //判断是否在Listview列表内
+            //            {
+            //                if (sID == ListView_ID_6B.Items[j].SubItems[1].Text)
+            //                {
+            //                    aListItem = ListView_ID_6B.Items[j];
+            //                    ChangeSubItem1(aListItem, 1, sID);
+            //                    isonlistview = true;
+            //                }
+            //            }
+            //            if (!isonlistview)
+            //            {
+            //                // CardNum1 = Convert.ToByte(ListView_ID_6B.Items.Count+1);
+            //                aListItem = ListView_ID_6B.Items[i];
+            //                s = sID;
+            //                ChangeSubItem1(aListItem, 1, s);
+
+            //            }
+            //        }
+            //        if (ComboBox_ID1_6B.Items.Count != 0)
+            //            ComboBox_ID1_6B.SelectedIndex = 0;
+            //    }
+            //}
+            //if (Timer_Test_6B.Enabled)
+            //{
+            //    if (Bycondition_6B.Checked)
+            //    {
+            //        if (fCmdRet != 0)
+            //            AddCmdLog("Inventory", "Query tag", fCmdRet);
+            //    }
+            //    else if (fCmdRet == 0XFB) //说明还未将所有卡读取完
+            //    {
+
+            //        StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Query Tag'Command Response=0xFB" +
+            //             "(No Tag Operable)";
+            //    }
+            //    else if (fCmdRet == 0)
+            //        StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Query Tag'Command Response=0x00" +
+            //             "(Find a Tag)";
+            //    else
+            //        AddCmdLog("Inventory", "Query Tag", fCmdRet);
+            //    if (fCmdRet == 0xEE)
+            //        StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() + " 'Query Tag'Command Response=0xee" +
+            //                      "(Response Command Error)";
+            //}
+            //if (fAppClosed)
+            //    Close();
+        }
+
+        private void Timer_Test_6B_Tick_1(object sender, EventArgs e)
+        {
+            if (fisinventoryscan_6B)
+                return;
+            fisinventoryscan_6B = true;
+            Inventory_6B();
+            fisinventoryscan_6B = false;
+        }
+
+        private void Timer_G2_Read_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Timer_6B_Read_Tick_1(object sender, EventArgs e)
+        {
+            if (fTimer_6B_ReadWrite)
+                return;
+            fTimer_6B_ReadWrite = true;
+            //Read_6B();
+            fTimer_6B_ReadWrite = false;
+        }
+
+        private void Timer_G2_Alarm_Tick_1(object sender, EventArgs e)
+        {
+            if (fTimer_6B_ReadWrite)
+                return;
+            fTimer_6B_ReadWrite = true;
+            //Read_6B();
+            fTimer_6B_ReadWrite = false;
+        }
+
+        private void Timer_6B_Write_Tick(object sender, EventArgs e)
+        {
+            if (fTimer_6B_ReadWrite)
+                return;
+            fTimer_6B_ReadWrite = true;
+            //Write_6B();
+            fTimer_6B_ReadWrite = false;
+        }
+
+        //private void Read_6B()
+        //{
+        //    string temp, temps;
+        //    byte[] CardData = new byte[320];
+        //    byte[] ID_6B = new byte[8];
+        //    byte Num, StartAddress;
+        //    if (ComboBox_ID1_6B.Items.Count == 0)
+        //        return;
+        //    if (ComboBox_ID1_6B.SelectedItem == null)
+        //        return;
+        //    temp = ComboBox_ID1_6B.SelectedItem.ToString();
+        //    if (temp == "")
+        //        return;
+        //    ID_6B = HexStringToByteArray(temp);
+        //    if (Edit_StartAddress_6B.Text == "")
+        //        return;
+        //    StartAddress = Convert.ToByte(Edit_StartAddress_6B.Text, 16);
+        //    if (Edit_Len_6B.Text == "")
+        //        return;
+        //    Num = Convert.ToByte(Edit_Len_6B.Text);
+        //    fCmdRet = StaticClassReaderB.ReadCard_6B(ref fComAdr, ID_6B, StartAddress, Num, CardData, ref ferrorcode, frmcomportindex);
+        //    if (fCmdRet == 0)
+        //    {
+        //        byte[] data = new byte[Num];
+        //        Array.Copy(CardData, data, Num);
+        //        temps = ByteArrayToHexString(data);
+        //        listBox2.Items.Add(temps);
+        //    }
+        //    if (fAppClosed)
+        //        Close();
+        //}
+
+        //private void Write_6B()
+        //{
+        //    string temp;
+        //    byte[] CardData = new byte[320];
+        //    byte[] ID_6B = new byte[8];
+        //    byte StartAddress;
+        //    byte Writedatalen;
+        //    int writtenbyte = 0;
+        //    if (ComboBox_ID1_6B.Items.Count == 0)
+        //        return;
+        //    if (ComboBox_ID1_6B.SelectedItem == null)
+        //        return;
+        //    temp = ComboBox_ID1_6B.SelectedItem.ToString();
+        //    if (temp == "")
+        //        return;
+        //    ID_6B = HexStringToByteArray(temp);
+        //    if (Edit_StartAddress_6B.Text == "")
+        //        return;
+        //    StartAddress = Convert.ToByte(Edit_StartAddress_6B.Text);
+        //    if ((Edit_WriteData_6B.Text == "") | (Edit_WriteData_6B.Text.Length % 2) != 0)
+        //        return;
+        //    Writedatalen = Convert.ToByte(Edit_WriteData_6B.Text.Length / 2);
+        //    byte[] Writedata = new byte[Writedatalen];
+        //    Writedata = HexStringToByteArray(Edit_WriteData_6B.Text);
+        //    fCmdRet = StaticClassReaderB.WriteCard_6B(ref fComAdr, ID_6B, StartAddress, Writedata, Writedatalen, ref writtenbyte, ref ferrorcode, frmcomportindex);
+        //    AddCmdLog("WriteCard", "Write", fCmdRet);
+        //    if (fAppClosed)
+        //        Close();
+        //}
+
+        private void Timer_G2_Read_Tick_1(object sender, EventArgs e)
+        {
+            if (fIsInventoryScan)
+                return;
+            fIsInventoryScan = true;
+            byte WordPtr, ENum;
+            byte Num = 0;
+            byte Mem = 0;
+            byte EPClength = 0;
+            string str;
+            byte[] CardData = new byte[320];
+            if ((maskadr_textbox.Text == "") || (maskLen_textBox.Text == ""))
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            if (checkBox1.Checked)
+                MaskFlag = 1;
+            else
+                MaskFlag = 0;
+            Maskadr = Convert.ToByte(maskadr_textbox.Text, 16);
+            MaskLen = Convert.ToByte(maskLen_textBox.Text, 16);
+            if (textBox1.Text == "")
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            if (ComboBox_EPC2.Items.Count == 0)
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            if (ComboBox_EPC2.SelectedItem == null)
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            str = ComboBox_EPC2.SelectedItem.ToString();
+            if (str == "")
+            {
+                // fIsInventoryScan = false;
+                //  return;
+            }
+            ENum = Convert.ToByte(str.Length / 4);
+            EPClength = Convert.ToByte(str.Length / 2);
+            byte[] EPC = new byte[ENum];
+            EPC = HexStringToByteArray(str);
+            if (C_Reserve.Checked)
+                Mem = 0;
+            if (C_EPC.Checked)
+                Mem = 1;
+            if (C_TID.Checked)
+                Mem = 2;
+            if (C_User.Checked)
+                Mem = 3;
+            if (Edit_AccessCode2.Text == "")
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            if (Edit_WordPtr.Text == "")
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            WordPtr = Convert.ToByte(Edit_WordPtr.Text, 16);
+            Num = Convert.ToByte(textBox1.Text);
+            if (Edit_AccessCode2.Text.Length != 8)
+            {
+                fIsInventoryScan = false;
+                return;
+            }
+            fPassWord = HexStringToByteArray(Edit_AccessCode2.Text);
+            fCmdRet = StaticClassReaderB.ReadCard_G2(ref fComAdr, EPC, Mem, WordPtr, Num, fPassWord, Maskadr, MaskLen, MaskFlag, CardData, EPClength, ref ferrorcode, frmcomportindex);
+            if (fCmdRet == 0)
+            {
+                byte[] daw = new byte[Num * 2];
+                Array.Copy(CardData, daw, Num * 2);
+                listBox1.Items.Add(ByteArrayToHexString(daw));
+                listBox1.SelectedIndex = listBox1.Items.Count - 1;
+                AddCmdLog("ReadData", "Read", fCmdRet);
+            }
+            if (ferrorcode != -1)
+            {
+                StatusBar1.Panels[0].Text = DateTime.Now.ToLongTimeString() +
+                 " 'Read' Response ErrorCode=0x" + Convert.ToString(ferrorcode, 2) +
+                 "(" + GetErrorCodeDesc(ferrorcode) + ")";
+                ferrorcode = -1;
+            }
+            fIsInventoryScan = false;
+            if (fAppClosed)
+                Close();
+        }
+
     }
 }

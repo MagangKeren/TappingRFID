@@ -44,46 +44,30 @@
             this.ComboBox_COM = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCek = new System.Windows.Forms.Button();
+            this.lblMatch = new System.Windows.Forms.Label();
+            this.btnTulis = new System.Windows.Forms.Button();
+            this.ComboBox_EPC2 = new System.Windows.Forms.ComboBox();
             this.ListView1_EPC = new System.Windows.Forms.ListView();
             this.listViewCol_Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewCol_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewCol_Length = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewCol_Times = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.BlockWrite = new System.Windows.Forms.Button();
-            this.ComboBox_EPC2 = new System.Windows.Forms.ComboBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.Button_BlockErase = new System.Windows.Forms.Button();
-            this.Button_DataWrite = new System.Windows.Forms.Button();
-            this.SpeedButton_Read_G2 = new System.Windows.Forms.Button();
-            this.Edit_WriteData = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Edit_WordPtr = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.C_User = new System.Windows.Forms.RadioButton();
-            this.C_TID = new System.Windows.Forms.RadioButton();
-            this.C_EPC = new System.Windows.Forms.RadioButton();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.CheckBox_TID = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox33 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.ComboBox_IntervalTime = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.StatusBar1 = new System.Windows.Forms.StatusBar();
             this.TStatusPanel = new System.Windows.Forms.StatusBarPanel();
             this.Port = new System.Windows.Forms.StatusBarPanel();
             this.Manufacturername = new System.Windows.Forms.StatusBarPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCek = new System.Windows.Forms.Button();
-            this.lblMatch = new System.Windows.Forms.Label();
-            this.btnTulis = new System.Windows.Forms.Button();
             this.Timer_Test_ = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnHome = new System.Windows.Forms.ToolStripButton();
@@ -135,16 +119,48 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.jmlRow = new System.Windows.Forms.Label();
+            this.Timer_G2_Read = new System.Windows.Forms.Timer(this.components);
+            this.Timer_G2_Alarm = new System.Windows.Forms.Timer(this.components);
+            this.Timer_6B_Read = new System.Windows.Forms.Timer(this.components);
+            this.Timer_6B_Write = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Timer_Test_6B = new System.Windows.Forms.Timer(this.components);
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.maskLen_textBox = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.maskadr_textbox = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox_pc = new System.Windows.Forms.TextBox();
+            this.checkBox_pc = new System.Windows.Forms.CheckBox();
+            this.BlockWrite = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.Button_BlockErase = new System.Windows.Forms.Button();
+            this.Button_DataWrite = new System.Windows.Forms.Button();
+            this.SpeedButton_Read_G2 = new System.Windows.Forms.Button();
+            this.Edit_WriteData = new System.Windows.Forms.TextBox();
+            this.Edit_AccessCode2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Edit_WordPtr = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.C_User = new System.Windows.Forms.RadioButton();
+            this.C_TID = new System.Windows.Forms.RadioButton();
+            this.C_EPC = new System.Windows.Forms.RadioButton();
+            this.C_Reserve = new System.Windows.Forms.RadioButton();
             this.GroupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TStatusPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Port)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Manufacturername)).BeginInit();
-            this.panel3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.GbDataPegOrMhs.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -155,6 +171,9 @@
             this.GbPencarian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGList)).BeginInit();
             this.panel2.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox1
@@ -173,7 +192,7 @@
             this.GroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GroupBox1.Size = new System.Drawing.Size(362, 275);
+            this.GroupBox1.Size = new System.Drawing.Size(362, 322);
             this.GroupBox1.TabIndex = 41;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Connection";
@@ -292,14 +311,69 @@
             // 
             this.groupBox4.Controls.Add(this.panel3);
             this.groupBox4.Controls.Add(this.ListView1_EPC);
-            this.groupBox4.Location = new System.Drawing.Point(850, 473);
+            this.groupBox4.Location = new System.Drawing.Point(850, 472);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox4.Size = new System.Drawing.Size(662, 419);
+            this.groupBox4.Size = new System.Drawing.Size(667, 419);
             this.groupBox4.TabIndex = 42;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Penulisan dan Pengecekan";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnCek);
+            this.panel3.Controls.Add(this.lblMatch);
+            this.panel3.Controls.Add(this.btnTulis);
+            this.panel3.Controls.Add(this.ComboBox_EPC2);
+            this.panel3.Location = new System.Drawing.Point(25, 29);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(620, 109);
+            this.panel3.TabIndex = 41;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // btnCek
+            // 
+            this.btnCek.BackColor = System.Drawing.Color.Transparent;
+            this.btnCek.Location = new System.Drawing.Point(30, 16);
+            this.btnCek.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCek.Name = "btnCek";
+            this.btnCek.Size = new System.Drawing.Size(180, 38);
+            this.btnCek.TabIndex = 37;
+            this.btnCek.Text = "Cek";
+            this.btnCek.UseVisualStyleBackColor = false;
+            this.btnCek.Click += new System.EventHandler(this.btnCek_Click);
+            // 
+            // lblMatch
+            // 
+            this.lblMatch.AutoSize = true;
+            this.lblMatch.Location = new System.Drawing.Point(447, 34);
+            this.lblMatch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMatch.Name = "lblMatch";
+            this.lblMatch.Size = new System.Drawing.Size(0, 20);
+            this.lblMatch.TabIndex = 39;
+            // 
+            // btnTulis
+            // 
+            this.btnTulis.Location = new System.Drawing.Point(30, 58);
+            this.btnTulis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnTulis.Name = "btnTulis";
+            this.btnTulis.Size = new System.Drawing.Size(180, 38);
+            this.btnTulis.TabIndex = 38;
+            this.btnTulis.Text = "Tulis";
+            this.btnTulis.UseVisualStyleBackColor = true;
+            this.btnTulis.Click += new System.EventHandler(this.btnTulis_Click);
+            // 
+            // ComboBox_EPC2
+            // 
+            this.ComboBox_EPC2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_EPC2.FormattingEnabled = true;
+            this.ComboBox_EPC2.Location = new System.Drawing.Point(248, 21);
+            this.ComboBox_EPC2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ComboBox_EPC2.Name = "ComboBox_EPC2";
+            this.ComboBox_EPC2.Size = new System.Drawing.Size(346, 28);
+            this.ComboBox_EPC2.TabIndex = 15;
             // 
             // ListView1_EPC
             // 
@@ -314,10 +388,10 @@
             this.ListView1_EPC.FullRowSelect = true;
             this.ListView1_EPC.GridLines = true;
             this.ListView1_EPC.HideSelection = false;
-            this.ListView1_EPC.Location = new System.Drawing.Point(25, 115);
+            this.ListView1_EPC.Location = new System.Drawing.Point(25, 148);
             this.ListView1_EPC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ListView1_EPC.Name = "ListView1_EPC";
-            this.ListView1_EPC.Size = new System.Drawing.Size(620, 294);
+            this.ListView1_EPC.Size = new System.Drawing.Size(620, 262);
             this.ListView1_EPC.TabIndex = 1;
             this.ListView1_EPC.UseCompatibleStateImageBehavior = false;
             this.ListView1_EPC.View = System.Windows.Forms.View.Details;
@@ -341,198 +415,6 @@
             // 
             this.listViewCol_Times.Text = "Times";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.BlockWrite);
-            this.groupBox5.Controls.Add(this.ComboBox_EPC2);
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.Button_BlockErase);
-            this.groupBox5.Controls.Add(this.Button_DataWrite);
-            this.groupBox5.Controls.Add(this.SpeedButton_Read_G2);
-            this.groupBox5.Controls.Add(this.Edit_WriteData);
-            this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Controls.Add(this.Edit_WordPtr);
-            this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Controls.Add(this.groupBox6);
-            this.groupBox5.Location = new System.Drawing.Point(1047, 849);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.Size = new System.Drawing.Size(461, 207);
-            this.groupBox5.TabIndex = 43;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Read Data / Write Data / Block Erase";
-            // 
-            // BlockWrite
-            // 
-            this.BlockWrite.Location = new System.Drawing.Point(136, 242);
-            this.BlockWrite.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BlockWrite.Name = "BlockWrite";
-            this.BlockWrite.Size = new System.Drawing.Size(109, 39);
-            this.BlockWrite.TabIndex = 16;
-            this.BlockWrite.Text = "BlockWrite";
-            this.BlockWrite.UseVisualStyleBackColor = true;
-            // 
-            // ComboBox_EPC2
-            // 
-            this.ComboBox_EPC2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_EPC2.FormattingEnabled = true;
-            this.ComboBox_EPC2.Location = new System.Drawing.Point(6, 26);
-            this.ComboBox_EPC2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ComboBox_EPC2.Name = "ComboBox_EPC2";
-            this.ComboBox_EPC2.Size = new System.Drawing.Size(436, 28);
-            this.ComboBox_EPC2.TabIndex = 15;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(379, 242);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(64, 39);
-            this.button7.TabIndex = 14;
-            this.button7.Text = "Clear";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // Button_BlockErase
-            // 
-            this.Button_BlockErase.Location = new System.Drawing.Point(253, 242);
-            this.Button_BlockErase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Button_BlockErase.Name = "Button_BlockErase";
-            this.Button_BlockErase.Size = new System.Drawing.Size(118, 39);
-            this.Button_BlockErase.TabIndex = 13;
-            this.Button_BlockErase.Text = "BlockErase";
-            this.Button_BlockErase.UseVisualStyleBackColor = true;
-            // 
-            // Button_DataWrite
-            // 
-            this.Button_DataWrite.Location = new System.Drawing.Point(66, 242);
-            this.Button_DataWrite.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Button_DataWrite.Name = "Button_DataWrite";
-            this.Button_DataWrite.Size = new System.Drawing.Size(64, 39);
-            this.Button_DataWrite.TabIndex = 12;
-            this.Button_DataWrite.Text = "Write";
-            this.Button_DataWrite.UseVisualStyleBackColor = true;
-            // 
-            // SpeedButton_Read_G2
-            // 
-            this.SpeedButton_Read_G2.Location = new System.Drawing.Point(6, 242);
-            this.SpeedButton_Read_G2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.SpeedButton_Read_G2.Name = "SpeedButton_Read_G2";
-            this.SpeedButton_Read_G2.Size = new System.Drawing.Size(56, 39);
-            this.SpeedButton_Read_G2.TabIndex = 11;
-            this.SpeedButton_Read_G2.Text = "Read";
-            this.SpeedButton_Read_G2.UseVisualStyleBackColor = true;
-            // 
-            // Edit_WriteData
-            // 
-            this.Edit_WriteData.Location = new System.Drawing.Point(174, 206);
-            this.Edit_WriteData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Edit_WriteData.Name = "Edit_WriteData";
-            this.Edit_WriteData.Size = new System.Drawing.Size(268, 26);
-            this.Edit_WriteData.TabIndex = 10;
-            this.Edit_WriteData.Text = "0000";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(307, 165);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.MaxLength = 3;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 26);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "4";
-            // 
-            // Edit_WordPtr
-            // 
-            this.Edit_WordPtr.Location = new System.Drawing.Point(307, 114);
-            this.Edit_WordPtr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Edit_WordPtr.MaxLength = 2;
-            this.Edit_WordPtr.Name = "Edit_WordPtr";
-            this.Edit_WordPtr.Size = new System.Drawing.Size(134, 26);
-            this.Edit_WordPtr.TabIndex = 7;
-            this.Edit_WordPtr.Text = "00";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 213);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(131, 20);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "Write Data (Hex):";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(12, 164);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(254, 40);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Length of Data(Read/Block Erase)\r\n(0-120/Word/D):";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(12, 129);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(240, 20);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Address of Tag Data(Word/Hex):";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.C_User);
-            this.groupBox6.Controls.Add(this.C_TID);
-            this.groupBox6.Controls.Add(this.C_EPC);
-            this.groupBox6.Location = new System.Drawing.Point(9, 51);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox6.Size = new System.Drawing.Size(435, 51);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            // 
-            // C_User
-            // 
-            this.C_User.AutoSize = true;
-            this.C_User.Location = new System.Drawing.Point(266, 19);
-            this.C_User.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.C_User.Name = "C_User";
-            this.C_User.Size = new System.Drawing.Size(68, 24);
-            this.C_User.TabIndex = 3;
-            this.C_User.TabStop = true;
-            this.C_User.Text = "User";
-            this.C_User.UseVisualStyleBackColor = true;
-            // 
-            // C_TID
-            // 
-            this.C_TID.AutoSize = true;
-            this.C_TID.Location = new System.Drawing.Point(180, 19);
-            this.C_TID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.C_TID.Name = "C_TID";
-            this.C_TID.Size = new System.Drawing.Size(60, 24);
-            this.C_TID.TabIndex = 2;
-            this.C_TID.TabStop = true;
-            this.C_TID.Text = "TID";
-            this.C_TID.UseVisualStyleBackColor = true;
-            // 
-            // C_EPC
-            // 
-            this.C_EPC.AutoSize = true;
-            this.C_EPC.Location = new System.Drawing.Point(91, 19);
-            this.C_EPC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.C_EPC.Name = "C_EPC";
-            this.C_EPC.Size = new System.Drawing.Size(66, 24);
-            this.C_EPC.TabIndex = 1;
-            this.C_EPC.TabStop = true;
-            this.C_EPC.Text = "EPC";
-            this.C_EPC.UseVisualStyleBackColor = true;
-            // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.CheckBox_TID);
@@ -540,7 +422,7 @@
             this.groupBox12.Controls.Add(this.groupBox33);
             this.groupBox12.Controls.Add(this.ComboBox_IntervalTime);
             this.groupBox12.Controls.Add(this.label23);
-            this.groupBox12.Location = new System.Drawing.Point(1443, 195);
+            this.groupBox12.Location = new System.Drawing.Point(1401, 135);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -560,6 +442,18 @@
             this.CheckBox_TID.TabIndex = 12;
             this.CheckBox_TID.Text = "TID";
             this.CheckBox_TID.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(352, 31);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 39);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Query Tag";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox33
             // 
@@ -582,6 +476,7 @@
             this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox5.MaxLength = 2;
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(54, 26);
             this.textBox5.TabIndex = 3;
             this.textBox5.Text = "04";
@@ -602,6 +497,7 @@
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox4.MaxLength = 2;
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(54, 26);
             this.textBox4.TabIndex = 1;
             this.textBox4.Text = "02";
@@ -615,18 +511,6 @@
             this.label54.Size = new System.Drawing.Size(86, 20);
             this.label54.TabIndex = 0;
             this.label54.Text = "StartAddr：";
-            // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(352, 31);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Query Tag";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ComboBox_IntervalTime
             // 
@@ -659,7 +543,7 @@
             this.Port,
             this.Manufacturername});
             this.StatusBar1.ShowPanels = true;
-            this.StatusBar1.Size = new System.Drawing.Size(1512, 48);
+            this.StatusBar1.Size = new System.Drawing.Size(1581, 48);
             this.StatusBar1.TabIndex = 45;
             this.StatusBar1.Text = "StatusBar1";
             // 
@@ -679,50 +563,6 @@
             this.Manufacturername.Name = "Manufacturername";
             this.Manufacturername.Text = "statusManufacturer nameBarPanel1";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnCek);
-            this.panel3.Controls.Add(this.lblMatch);
-            this.panel3.Controls.Add(this.btnTulis);
-            this.panel3.Location = new System.Drawing.Point(25, 29);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(620, 76);
-            this.panel3.TabIndex = 41;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // btnCek
-            // 
-            this.btnCek.BackColor = System.Drawing.Color.Transparent;
-            this.btnCek.Location = new System.Drawing.Point(30, 16);
-            this.btnCek.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCek.Name = "btnCek";
-            this.btnCek.Size = new System.Drawing.Size(180, 38);
-            this.btnCek.TabIndex = 37;
-            this.btnCek.Text = "Cek";
-            this.btnCek.UseVisualStyleBackColor = false;
-            this.btnCek.Click += new System.EventHandler(this.btnCek_Click);
-            // 
-            // lblMatch
-            // 
-            this.lblMatch.AutoSize = true;
-            this.lblMatch.Location = new System.Drawing.Point(447, 34);
-            this.lblMatch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMatch.Name = "lblMatch";
-            this.lblMatch.Size = new System.Drawing.Size(0, 20);
-            this.lblMatch.TabIndex = 39;
-            // 
-            // btnTulis
-            // 
-            this.btnTulis.Location = new System.Drawing.Point(243, 16);
-            this.btnTulis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnTulis.Name = "btnTulis";
-            this.btnTulis.Size = new System.Drawing.Size(180, 38);
-            this.btnTulis.TabIndex = 38;
-            this.btnTulis.Text = "Tulis";
-            this.btnTulis.UseVisualStyleBackColor = true;
-            this.btnTulis.Click += new System.EventHandler(this.btnTulis_Click);
-            // 
             // Timer_Test_
             // 
             this.Timer_Test_.Tick += new System.EventHandler(this.Timer_Test__Tick);
@@ -735,7 +575,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1512, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(1581, 32);
             this.toolStrip1.TabIndex = 61;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -767,7 +607,7 @@
             this.GbDataPegOrMhs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GbDataPegOrMhs.Name = "GbDataPegOrMhs";
             this.GbDataPegOrMhs.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GbDataPegOrMhs.Size = new System.Drawing.Size(1021, 322);
+            this.GbDataPegOrMhs.Size = new System.Drawing.Size(1022, 322);
             this.GbDataPegOrMhs.TabIndex = 62;
             this.GbDataPegOrMhs.TabStop = false;
             this.GbDataPegOrMhs.Text = "Data Pegawai / Mahasiswa";
@@ -827,7 +667,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(250, 23);
+            this.textBox2.Location = new System.Drawing.Point(250, 22);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
@@ -970,7 +810,7 @@
             // 
             // Edit_AccessCode3
             // 
-            this.Edit_AccessCode3.Location = new System.Drawing.Point(160, 77);
+            this.Edit_AccessCode3.Location = new System.Drawing.Point(160, 78);
             this.Edit_AccessCode3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Edit_AccessCode3.MaxLength = 8;
             this.Edit_AccessCode3.Name = "Edit_AccessCode3";
@@ -1001,7 +841,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(9, 23);
+            this.label25.Location = new System.Drawing.Point(9, 22);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(89, 40);
@@ -1054,7 +894,7 @@
             // txt_nama
             // 
             this.txt_nama.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nama.Location = new System.Drawing.Point(212, 57);
+            this.txt_nama.Location = new System.Drawing.Point(212, 58);
             this.txt_nama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_nama.Name = "txt_nama";
             this.txt_nama.ReadOnly = true;
@@ -1080,7 +920,7 @@
             this.PnlTop.Location = new System.Drawing.Point(0, 32);
             this.PnlTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PnlTop.Name = "PnlTop";
-            this.PnlTop.Size = new System.Drawing.Size(1512, 77);
+            this.PnlTop.Size = new System.Drawing.Size(1581, 78);
             this.PnlTop.TabIndex = 63;
             // 
             // GbSumberData
@@ -1092,7 +932,7 @@
             this.GbSumberData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GbSumberData.Name = "GbSumberData";
             this.GbSumberData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GbSumberData.Size = new System.Drawing.Size(297, 77);
+            this.GbSumberData.Size = new System.Drawing.Size(297, 78);
             this.GbSumberData.TabIndex = 35;
             this.GbSumberData.TabStop = false;
             this.GbSumberData.Text = "Sumber data";
@@ -1133,7 +973,7 @@
             this.GbPencarian.Controls.Add(this.label13);
             this.GbPencarian.Controls.Add(this.label14);
             this.GbPencarian.Controls.Add(this.panel2);
-            this.GbPencarian.Location = new System.Drawing.Point(0, 473);
+            this.GbPencarian.Location = new System.Drawing.Point(0, 472);
             this.GbPencarian.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GbPencarian.Name = "GbPencarian";
             this.GbPencarian.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1216,10 +1056,10 @@
             // 
             this.btnCari.Image = ((System.Drawing.Image)(resources.GetObject("btnCari.Image")));
             this.btnCari.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCari.Location = new System.Drawing.Point(687, 58);
+            this.btnCari.Location = new System.Drawing.Point(657, 58);
             this.btnCari.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCari.Name = "btnCari";
-            this.btnCari.Size = new System.Drawing.Size(153, 57);
+            this.btnCari.Size = new System.Drawing.Size(153, 58);
             this.btnCari.TabIndex = 59;
             this.btnCari.Text = "Cari";
             this.btnCari.UseVisualStyleBackColor = true;
@@ -1229,7 +1069,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(278, 103);
+            this.label11.Location = new System.Drawing.Point(278, 102);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(19, 29);
@@ -1267,7 +1107,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(26, 103);
+            this.label13.Location = new System.Drawing.Point(26, 102);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(246, 29);
@@ -1304,30 +1144,380 @@
             this.jmlRow.Size = new System.Drawing.Size(0, 20);
             this.jmlRow.TabIndex = 60;
             // 
+            // Timer_G2_Read
+            // 
+            this.Timer_G2_Read.Interval = 200;
+            this.Timer_G2_Read.Tick += new System.EventHandler(this.Timer_G2_Read_Tick_1);
+            // 
+            // Timer_G2_Alarm
+            // 
+            this.Timer_G2_Alarm.Tick += new System.EventHandler(this.Timer_G2_Alarm_Tick_1);
+            // 
+            // Timer_6B_Read
+            // 
+            this.Timer_6B_Read.Tick += new System.EventHandler(this.Timer_6B_Read_Tick_1);
+            // 
+            // Timer_6B_Write
+            // 
+            this.Timer_6B_Write.Tick += new System.EventHandler(this.Timer_6B_Write_Tick);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // Timer_Test_6B
+            // 
+            this.Timer_Test_6B.Tick += new System.EventHandler(this.Timer_Test_6B_Tick_1);
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Controls.Add(this.maskLen_textBox);
+            this.groupBox31.Controls.Add(this.label44);
+            this.groupBox31.Controls.Add(this.maskadr_textbox);
+            this.groupBox31.Controls.Add(this.label43);
+            this.groupBox31.Controls.Add(this.checkBox2);
+            this.groupBox31.Location = new System.Drawing.Point(1527, 324);
+            this.groupBox31.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox31.Size = new System.Drawing.Size(721, 80);
+            this.groupBox31.TabIndex = 66;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "EPC Mask Enabled";
+            this.groupBox31.Visible = false;
+            // 
+            // maskLen_textBox
+            // 
+            this.maskLen_textBox.Enabled = false;
+            this.maskLen_textBox.Location = new System.Drawing.Point(518, 30);
+            this.maskLen_textBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.maskLen_textBox.MaxLength = 2;
+            this.maskLen_textBox.Name = "maskLen_textBox";
+            this.maskLen_textBox.Size = new System.Drawing.Size(181, 26);
+            this.maskLen_textBox.TabIndex = 4;
+            this.maskLen_textBox.Text = "00";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(429, 39);
+            this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(78, 20);
+            this.label44.TabIndex = 3;
+            this.label44.Text = "MaskLen:";
+            // 
+            // maskadr_textbox
+            // 
+            this.maskadr_textbox.Enabled = false;
+            this.maskadr_textbox.Location = new System.Drawing.Point(252, 30);
+            this.maskadr_textbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.maskadr_textbox.MaxLength = 2;
+            this.maskadr_textbox.Name = "maskadr_textbox";
+            this.maskadr_textbox.Size = new System.Drawing.Size(148, 26);
+            this.maskadr_textbox.TabIndex = 2;
+            this.maskadr_textbox.Text = "00";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(163, 39);
+            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(76, 20);
+            this.label43.TabIndex = 1;
+            this.label43.Text = "MaskAdr:";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Enabled = false;
+            this.checkBox2.Location = new System.Drawing.Point(6, 36);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(94, 24);
+            this.checkBox2.TabIndex = 0;
+            this.checkBox2.Text = "Enabled";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox_pc);
+            this.groupBox5.Controls.Add(this.checkBox_pc);
+            this.groupBox5.Controls.Add(this.BlockWrite);
+            this.groupBox5.Controls.Add(this.button7);
+            this.groupBox5.Controls.Add(this.Button_BlockErase);
+            this.groupBox5.Controls.Add(this.Button_DataWrite);
+            this.groupBox5.Controls.Add(this.SpeedButton_Read_G2);
+            this.groupBox5.Controls.Add(this.Edit_WriteData);
+            this.groupBox5.Controls.Add(this.Edit_AccessCode2);
+            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.Edit_WordPtr);
+            this.groupBox5.Controls.Add(this.listBox1);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.groupBox6);
+            this.groupBox5.Location = new System.Drawing.Point(570, 135);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox5.Size = new System.Drawing.Size(721, 339);
+            this.groupBox5.TabIndex = 65;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Read Data / Write Data / Block Erase";
+            this.groupBox5.Visible = false;
+            // 
+            // textBox_pc
+            // 
+            this.textBox_pc.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_pc.Location = new System.Drawing.Point(656, 25);
+            this.textBox_pc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_pc.Name = "textBox_pc";
+            this.textBox_pc.ReadOnly = true;
+            this.textBox_pc.Size = new System.Drawing.Size(52, 26);
+            this.textBox_pc.TabIndex = 27;
+            this.textBox_pc.Text = "0800";
+            // 
+            // checkBox_pc
+            // 
+            this.checkBox_pc.AutoSize = true;
+            this.checkBox_pc.Location = new System.Drawing.Point(453, 30);
+            this.checkBox_pc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBox_pc.Name = "checkBox_pc";
+            this.checkBox_pc.Size = new System.Drawing.Size(187, 24);
+            this.checkBox_pc.TabIndex = 26;
+            this.checkBox_pc.Text = "Compute and add PC";
+            this.checkBox_pc.UseVisualStyleBackColor = true;
+            // 
+            // BlockWrite
+            // 
+            this.BlockWrite.Location = new System.Drawing.Point(136, 291);
+            this.BlockWrite.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BlockWrite.Name = "BlockWrite";
+            this.BlockWrite.Size = new System.Drawing.Size(109, 39);
+            this.BlockWrite.TabIndex = 16;
+            this.BlockWrite.Text = "BlockWrite";
+            this.BlockWrite.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(379, 291);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(64, 39);
+            this.button7.TabIndex = 14;
+            this.button7.Text = "Clear";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // Button_BlockErase
+            // 
+            this.Button_BlockErase.Location = new System.Drawing.Point(253, 291);
+            this.Button_BlockErase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_BlockErase.Name = "Button_BlockErase";
+            this.Button_BlockErase.Size = new System.Drawing.Size(118, 39);
+            this.Button_BlockErase.TabIndex = 13;
+            this.Button_BlockErase.Text = "BlockErase";
+            this.Button_BlockErase.UseVisualStyleBackColor = true;
+            // 
+            // Button_DataWrite
+            // 
+            this.Button_DataWrite.Location = new System.Drawing.Point(66, 291);
+            this.Button_DataWrite.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_DataWrite.Name = "Button_DataWrite";
+            this.Button_DataWrite.Size = new System.Drawing.Size(64, 39);
+            this.Button_DataWrite.TabIndex = 12;
+            this.Button_DataWrite.Text = "Write";
+            this.Button_DataWrite.UseVisualStyleBackColor = true;
+            this.Button_DataWrite.Click += new System.EventHandler(this.Button_DataWrite_Click);
+            // 
+            // SpeedButton_Read_G2
+            // 
+            this.SpeedButton_Read_G2.Location = new System.Drawing.Point(6, 291);
+            this.SpeedButton_Read_G2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SpeedButton_Read_G2.Name = "SpeedButton_Read_G2";
+            this.SpeedButton_Read_G2.Size = new System.Drawing.Size(55, 39);
+            this.SpeedButton_Read_G2.TabIndex = 11;
+            this.SpeedButton_Read_G2.Text = "Read";
+            this.SpeedButton_Read_G2.UseVisualStyleBackColor = true;
+            this.SpeedButton_Read_G2.Click += new System.EventHandler(this.SpeedButton_Read_G2_Click);
+            // 
+            // Edit_WriteData
+            // 
+            this.Edit_WriteData.Location = new System.Drawing.Point(174, 254);
+            this.Edit_WriteData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Edit_WriteData.Name = "Edit_WriteData";
+            this.Edit_WriteData.Size = new System.Drawing.Size(268, 26);
+            this.Edit_WriteData.TabIndex = 10;
+            this.Edit_WriteData.Text = "0000";
+            // 
+            // Edit_AccessCode2
+            // 
+            this.Edit_AccessCode2.Location = new System.Drawing.Point(233, 210);
+            this.Edit_AccessCode2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Edit_AccessCode2.MaxLength = 8;
+            this.Edit_AccessCode2.Name = "Edit_AccessCode2";
+            this.Edit_AccessCode2.Size = new System.Drawing.Size(210, 26);
+            this.Edit_AccessCode2.TabIndex = 9;
+            this.Edit_AccessCode2.Text = "00000000";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(307, 165);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.MaxLength = 3;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(134, 26);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.Text = "4";
+            // 
+            // Edit_WordPtr
+            // 
+            this.Edit_WordPtr.Location = new System.Drawing.Point(307, 114);
+            this.Edit_WordPtr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Edit_WordPtr.MaxLength = 2;
+            this.Edit_WordPtr.Name = "Edit_WordPtr";
+            this.Edit_WordPtr.Size = new System.Drawing.Size(134, 26);
+            this.Edit_WordPtr.TabIndex = 7;
+            this.Edit_WordPtr.Text = "00";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(451, 64);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(259, 264);
+            this.listBox1.TabIndex = 6;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 261);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(131, 20);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Write Data (Hex):";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(12, 215);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(193, 20);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Access Password (8 Hex):";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(12, 164);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(254, 40);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Length of Data(Read/Block Erase)\r\n(0-120/Word/D):";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(12, 129);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(240, 20);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Address of Tag Data(Word/Hex):";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.C_User);
+            this.groupBox6.Controls.Add(this.C_TID);
+            this.groupBox6.Controls.Add(this.C_EPC);
+            this.groupBox6.Controls.Add(this.C_Reserve);
+            this.groupBox6.Location = new System.Drawing.Point(9, 51);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox6.Size = new System.Drawing.Size(435, 51);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            // 
+            // C_User
+            // 
+            this.C_User.AutoSize = true;
+            this.C_User.Location = new System.Drawing.Point(310, 19);
+            this.C_User.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.C_User.Name = "C_User";
+            this.C_User.Size = new System.Drawing.Size(68, 24);
+            this.C_User.TabIndex = 3;
+            this.C_User.TabStop = true;
+            this.C_User.Text = "User";
+            this.C_User.UseVisualStyleBackColor = true;
+            // 
+            // C_TID
+            // 
+            this.C_TID.AutoSize = true;
+            this.C_TID.Location = new System.Drawing.Point(224, 19);
+            this.C_TID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.C_TID.Name = "C_TID";
+            this.C_TID.Size = new System.Drawing.Size(60, 24);
+            this.C_TID.TabIndex = 2;
+            this.C_TID.TabStop = true;
+            this.C_TID.Text = "TID";
+            this.C_TID.UseVisualStyleBackColor = true;
+            // 
+            // C_EPC
+            // 
+            this.C_EPC.AutoSize = true;
+            this.C_EPC.Location = new System.Drawing.Point(135, 19);
+            this.C_EPC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.C_EPC.Name = "C_EPC";
+            this.C_EPC.Size = new System.Drawing.Size(66, 24);
+            this.C_EPC.TabIndex = 1;
+            this.C_EPC.TabStop = true;
+            this.C_EPC.Text = "EPC";
+            this.C_EPC.UseVisualStyleBackColor = true;
+            // 
+            // C_Reserve
+            // 
+            this.C_Reserve.AutoSize = true;
+            this.C_Reserve.Location = new System.Drawing.Point(6, 19);
+            this.C_Reserve.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.C_Reserve.Name = "C_Reserve";
+            this.C_Reserve.Size = new System.Drawing.Size(103, 24);
+            this.C_Reserve.TabIndex = 0;
+            this.C_Reserve.TabStop = true;
+            this.C_Reserve.Text = "Password";
+            this.C_Reserve.UseVisualStyleBackColor = true;
+            // 
             // Device3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1512, 1050);
+            this.ClientSize = new System.Drawing.Size(1581, 1050);
+            this.Controls.Add(this.groupBox31);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.GbPencarian);
             this.Controls.Add(this.PnlTop);
             this.Controls.Add(this.GbDataPegOrMhs);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.StatusBar1);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.GroupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Device3";
             this.Text = "Device3";
             this.Load += new System.EventHandler(this.Device3_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.groupBox33.ResumeLayout(false);
@@ -1335,8 +1525,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TStatusPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Port)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Manufacturername)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.GbDataPegOrMhs.ResumeLayout(false);
@@ -1355,6 +1543,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGList)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1379,23 +1573,6 @@
         private System.Windows.Forms.ColumnHeader listViewCol_ID;
         private System.Windows.Forms.ColumnHeader listViewCol_Length;
         private System.Windows.Forms.ColumnHeader listViewCol_Times;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button BlockWrite;
-        private System.Windows.Forms.ComboBox ComboBox_EPC2;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button Button_BlockErase;
-        private System.Windows.Forms.Button Button_DataWrite;
-        private System.Windows.Forms.Button SpeedButton_Read_G2;
-        private System.Windows.Forms.TextBox Edit_WriteData;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox Edit_WordPtr;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.RadioButton C_User;
-        private System.Windows.Forms.RadioButton C_TID;
-        private System.Windows.Forms.RadioButton C_EPC;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.CheckBox CheckBox_TID;
         private System.Windows.Forms.GroupBox groupBox33;
@@ -1465,5 +1642,40 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label jmlRow;
+        private System.Windows.Forms.Timer Timer_G2_Read;
+        private System.Windows.Forms.Timer Timer_G2_Alarm;
+        private System.Windows.Forms.Timer Timer_6B_Read;
+        private System.Windows.Forms.Timer Timer_6B_Write;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer Timer_Test_6B;
+        private System.Windows.Forms.GroupBox groupBox31;
+        private System.Windows.Forms.TextBox maskLen_textBox;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox maskadr_textbox;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox textBox_pc;
+        private System.Windows.Forms.CheckBox checkBox_pc;
+        private System.Windows.Forms.Button BlockWrite;
+        private System.Windows.Forms.ComboBox ComboBox_EPC2;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button Button_BlockErase;
+        private System.Windows.Forms.Button Button_DataWrite;
+        private System.Windows.Forms.Button SpeedButton_Read_G2;
+        private System.Windows.Forms.TextBox Edit_WriteData;
+        private System.Windows.Forms.TextBox Edit_AccessCode2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Edit_WordPtr;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RadioButton C_User;
+        private System.Windows.Forms.RadioButton C_TID;
+        private System.Windows.Forms.RadioButton C_EPC;
+        private System.Windows.Forms.RadioButton C_Reserve;
     }
 }
