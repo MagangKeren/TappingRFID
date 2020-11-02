@@ -98,6 +98,7 @@ namespace AmbilKtm
                     DGList.Rows[e.Row.Index].DefaultCellStyle.BackColor = Color.White;
                 }
             }
+           
         }
 
         private void DGList_SelectionChanged(object sender, EventArgs e)
@@ -125,6 +126,7 @@ namespace AmbilKtm
             {
                 tampilPeg(nimOrId);
             }
+
         }
 
         private void txtRfid_TextChanged(object sender, EventArgs e)
@@ -134,6 +136,7 @@ namespace AmbilKtm
             {
                 tEpcData.Text = tEpcData.Text.Insert(tEpcData.Text.Length - 4, " ");
             }
+           
         }
 
         private void cekHakAkases()
@@ -608,6 +611,7 @@ namespace AmbilKtm
         private void Device2_Load(object sender, EventArgs e)
         {
             cekHakAkases();
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
             cCommPort.SelectedIndex = 0;
             cBaudrate.SelectedIndex = 0;
@@ -696,7 +700,7 @@ namespace AmbilKtm
             {
                 bEpcId_Click(sender, e);
             }
-
+            
         }
 
         private void timerPing_Tick(object sender, EventArgs e)
@@ -711,6 +715,7 @@ namespace AmbilKtm
                     bEpcId_Click(sender, e);
                 }
             }
+           
         }
 
         private void bRs232Con_Click(object sender, EventArgs e)
@@ -775,6 +780,13 @@ namespace AmbilKtm
 
             bEpcRead.Enabled = false;
             bEpcWrite.Enabled = false;
+            cEpcMembank.ResetText();
+            cEpcTimes.ResetText();
+            cEpcWordptr.ResetText();
+            cEpcWordcnt.ResetText();
+            comboBox1.ResetText();
+            tEpcData.Text = "";
+            
         }
 
         private void bEpcId_Click(object sender, EventArgs e)
@@ -836,7 +848,6 @@ namespace AmbilKtm
                     s2 += s1;
                     s += s1;
 
-
                 }
                 //dataBaca = s2;
                 MessageBox.Show("Read Succes!");
@@ -848,9 +859,21 @@ namespace AmbilKtm
                 }
                 if ((comboBox1.Items.Count != 0))
                 {
-                    comboBox1.SelectedIndex = 0;
+                    comboBox1.SelectedItem = s2;
                 }
+
             }
+            if (txtRfid.Text.Trim() != "")
+            {
+                if (txtRfid.Text == comboBox1.Text)
+                { //jika sama
+                    label12.Text = "Match!";
+                    //lblMatch.BackColor = Color.Blue;
+                    label12.ForeColor = Color.Blue;
+                }
+                else { label12.Text = "Not Match!"; label12.ForeColor = Color.Red; }
+            }
+            else { label12.Text = "Not Match!"; label12.ForeColor = Color.Red; }
         }
 
         private void bEpcWrite_Click(object sender, EventArgs e)
@@ -860,6 +883,7 @@ namespace AmbilKtm
             int wordcnt1;
             int status1 = 0;
             byte[] value1 = new byte[16];
+            bool makan = false;
 
             string s = "The data is:";
             string s1 = "";
@@ -878,73 +902,80 @@ namespace AmbilKtm
                 s += s1;
             }
             dataBaca = s2;
-
-            if (comboBox1.Text == dataBaca)
+            if(status1 != 0)
             {
-                ushort[] value = new ushort[16];
-
-                int i = 0;
-                byte membank;
-                byte wordptr;
-                byte wordcnt;
-                int status;
-                string hexValues;
-
-                membank = (byte)(cEpcMembank.SelectedIndex);
-                wordptr = (byte)(cEpcWordptr.SelectedIndex);
-                wordcnt = (byte)(cEpcWordcnt.SelectedIndex);
-
-
-                hexValues = tEpcData.Text;
-                string[] hexValuesSplit = hexValues.Split(' ');
-
-                if (comboBox1.Items.Count == 0)
-                    return;
-                try
-                {
-                    foreach (String hex in hexValuesSplit)
-                    {
-                        // Convert the number expressed in base-16 to an integer.
-                        if (hex.Length >= 2)
-                        {
-                            int x = Convert.ToInt32(hex, 16);
-                            value[i++] = (ushort)x;
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please input data needed");
-                    //lInfo.Items.Add("Please input data needed");
-                    return;
-                }
-                if (i != wordcnt)
-                {
-                    MessageBox.Show("Please input data needed");
-                    //lInfo.Items.Add("Please input data needed");
-                    return;
-                }
-                for (byte j = 0; j < wordcnt; j++)
-                {
-
-                    status = Reader1.EpcWrite(membank, (byte)(wordptr + j), value[j]);
-
-                    if (status != 0)
-                    {
-                        MessageBox.Show("Write  Failed!");
-                       // lInfo.Items.Add("Write  Failed!");
-                        return;
-                    }
-                    //else if (comboBox1.SelectedIndex != timerScanEPC_Tick)
-
-                }
-                MessageBox.Show("Write  Succes!");
-                //lInfo.Items.Add("Write success!");
+                MessageBox.Show("Kartu Tidak Terbaca");
             }
             else
             {
-                MessageBox.Show("ID Kartu Tidak Sama");
+                if (comboBox1.Text == dataBaca)
+                {
+                    ushort[] value = new ushort[16];
+
+                    int i = 0;
+                    byte membank;
+                    byte wordptr;
+                    byte wordcnt;
+                    int status;
+                    string hexValues;
+
+                    membank = (byte)(cEpcMembank.SelectedIndex);
+                    wordptr = (byte)(cEpcWordptr.SelectedIndex);
+                    wordcnt = (byte)(cEpcWordcnt.SelectedIndex);
+
+
+                    hexValues = tEpcData.Text;
+                    string[] hexValuesSplit = hexValues.Split(' ');
+
+                    if (comboBox1.Items.Count == 0)
+                        return;
+                    try
+                    {
+                        foreach (String hex in hexValuesSplit)
+                        {
+                            // Convert the number expressed in base-16 to an integer.
+                            if (hex.Length >= 2)
+                            {
+                                int x = Convert.ToInt32(hex, 16);
+                                value[i++] = (ushort)x;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Please input data needed");
+                        //lInfo.Items.Add("Please input data needed");
+                        return;
+                    }
+                    if (i != wordcnt)
+                    {
+                        MessageBox.Show("Please input data needed");
+                        //lInfo.Items.Add("Please input data needed");
+                        return;
+                    }
+                    for (byte j = 0; j < wordcnt; j++)
+                    {
+
+                        status = Reader1.EpcWrite(membank, (byte)(wordptr + j), value[j]);
+
+                        if (status != 0)
+                        {
+                            MessageBox.Show("Write  Failed!");
+                            // lInfo.Items.Add("Write  Failed!");
+                            return;
+                        }
+                        //else if (comboBox1.SelectedIndex != timerScanEPC_Tick)
+
+                    }
+                    MessageBox.Show("Write  Succes!");
+                    //lInfo.Items.Add("Write success!");
+                }
+                else
+                {
+                    MessageBox.Show("ID Kartu Tidak Sama");
+                }
             }
+            
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -1044,6 +1075,11 @@ namespace AmbilKtm
             Form1 home = new Form1();
             home.Show();
             this.Hide();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

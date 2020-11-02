@@ -488,7 +488,7 @@ namespace AmbilKtm
 
                 }
                 AddCmdLog("Inventory", "Exit Query", 0);
-                button2.Text = "Query Tag";
+                btnCek.Text = "Cek";
             }
             else
             {
@@ -505,7 +505,7 @@ namespace AmbilKtm
 
                 ComboBox_EPC2.Items.Clear();
 
-                button2.Text = "Stop";
+                btnCek.Text = "Stop";
                 checkBox1.Enabled = false;
             }
         }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Device2));
             this.GbDataPegOrMhs = new System.Windows.Forms.GroupBox();
             this.lbIdPegawai = new System.Windows.Forms.Label();
@@ -92,6 +92,7 @@
             this.cEpcWordptr = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bEpcId = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.GbDataPegOrMhs.SuspendLayout();
             this.GbPencarian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGList)).BeginInit();
@@ -272,27 +273,27 @@
             this.nim,
             this.fullname,
             this.rfid});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGList.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGList.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGList.Location = new System.Drawing.Point(4, 142);
             this.DGList.Margin = new System.Windows.Forms.Padding(4);
             this.DGList.Name = "DGList";
             this.DGList.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGList.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DGList.Size = new System.Drawing.Size(882, 201);
             this.DGList.TabIndex = 61;
             this.DGList.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DGList_RowStateChanged);
@@ -634,12 +635,13 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(986, 254);
+            this.label17.Location = new System.Drawing.Point(1230, 214);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(99, 20);
             this.label17.TabIndex = 68;
             this.label17.Text = "Data(Hex)";
+            this.label17.Visible = false;
             // 
             // label16
             // 
@@ -666,11 +668,12 @@
             // 
             // tEpcData
             // 
-            this.tEpcData.Location = new System.Drawing.Point(1102, 254);
+            this.tEpcData.Location = new System.Drawing.Point(1234, 183);
             this.tEpcData.Margin = new System.Windows.Forms.Padding(4);
             this.tEpcData.Name = "tEpcData";
-            this.tEpcData.Size = new System.Drawing.Size(165, 22);
+            this.tEpcData.Size = new System.Drawing.Size(44, 22);
             this.tEpcData.TabIndex = 64;
+            this.tEpcData.Visible = false;
             // 
             // groupBox1
             // 
@@ -696,7 +699,7 @@
             this.bEpcRead.BackColor = System.Drawing.Color.SlateGray;
             this.bEpcRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bEpcRead.ForeColor = System.Drawing.Color.Black;
-            this.bEpcRead.Location = new System.Drawing.Point(1113, 322);
+            this.bEpcRead.Location = new System.Drawing.Point(1071, 322);
             this.bEpcRead.Margin = new System.Windows.Forms.Padding(4);
             this.bEpcRead.Name = "bEpcRead";
             this.bEpcRead.Size = new System.Drawing.Size(86, 35);
@@ -710,7 +713,7 @@
             this.bEpcWrite.BackColor = System.Drawing.Color.SlateGray;
             this.bEpcWrite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bEpcWrite.ForeColor = System.Drawing.Color.Black;
-            this.bEpcWrite.Location = new System.Drawing.Point(1218, 322);
+            this.bEpcWrite.Location = new System.Drawing.Point(1176, 322);
             this.bEpcWrite.Margin = new System.Windows.Forms.Padding(4);
             this.bEpcWrite.Name = "bEpcWrite";
             this.bEpcWrite.Size = new System.Drawing.Size(89, 35);
@@ -783,13 +786,14 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(202, 24);
             this.comboBox1.TabIndex = 75;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // bEpcId
             // 
             this.bEpcId.BackColor = System.Drawing.Color.SlateGray;
             this.bEpcId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bEpcId.ForeColor = System.Drawing.Color.Black;
-            this.bEpcId.Location = new System.Drawing.Point(1019, 322);
+            this.bEpcId.Location = new System.Drawing.Point(977, 322);
             this.bEpcId.Margin = new System.Windows.Forms.Padding(4);
             this.bEpcId.Name = "bEpcId";
             this.bEpcId.Size = new System.Drawing.Size(86, 35);
@@ -798,11 +802,21 @@
             this.bEpcId.UseVisualStyleBackColor = false;
             this.bEpcId.Click += new System.EventHandler(this.bEpcId_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(1112, 262);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 18);
+            this.label12.TabIndex = 77;
+            // 
             // Device2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1621, 720);
+            this.ClientSize = new System.Drawing.Size(1377, 720);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.bEpcId);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.GbDataPegOrMhs);
@@ -904,5 +918,6 @@
         private System.Windows.Forms.ComboBox cEpcWordptr;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button bEpcId;
+        private System.Windows.Forms.Label label12;
     }
 }
